@@ -1,5 +1,7 @@
 package profile;
 
+import java.util.ArrayList;
+
 /**
  * Created by AZIS ADI KUNCORO (13515120) on 22/04/2017.
  */
@@ -8,7 +10,7 @@ public class Profile {
   private long uang;
   private String namaZoo;
   private int jumlahAnimal;
-  private String[] achievement;
+  private ArrayList<String> achievement;
 
   /**
    * Konstruktor parameter dari kelas Profile
@@ -18,12 +20,12 @@ public class Profile {
    * @param jumlahAnimal jumlah animal yang dimiliki
    * @param achievement achievement - achievement yang dimiliki
    */
-  public Profile (String namaPemilik, long uang, String namaZoo, int jumlahAnimal, String[] achievement){
+  public Profile (String namaPemilik, long uang, String namaZoo, int jumlahAnimal, ArrayList<String> achievement){
     this.namaPemilik = namaPemilik;
     this.uang = uang;
     this.namaZoo = namaZoo;
     this.jumlahAnimal = jumlahAnimal;
-    this.achievement = achievement;
+    this.achievement = new ArrayList<String>(achievement);
   }
 
   /**
@@ -62,7 +64,32 @@ public class Profile {
    * Getter achievement
    * @return achievement
    */
-  public String[] getAchievement() {
+  public ArrayList<String> getAchievement() {
     return achievement;
   }
+
+  /**
+   * Menambah uang sekarang sebanyak nominalIncrease
+   * @param nominalIncrease jumlah uang yang akan ditambah
+   */
+  public void increaseUang(int nominalIncrease) {
+    uang += nominalIncrease;
+  }
+
+  /**
+   * Mengurangi uang sekarang sebanyak nominalDecrease
+   * @param nominalDecrease jumlah uang yang akan dikurangi
+   */
+  public void decreaseUang(int nominalDecrease) {
+    uang -= nominalDecrease;
+  }
+
+  /**
+   * Menambahkan achievement baru
+   * @param newAchievement achievement baru yang akan ditambahkan
+   */
+  public void addAchievement(String newAchievement) {
+    achievement.add(newAchievement);
+  }
+
 }
