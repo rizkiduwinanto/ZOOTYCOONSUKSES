@@ -34,37 +34,28 @@ public class Zoo {
   public final void setCellType(Point p,char readed) {
     switch (readed) {
       case '.' :
-        mycell[p.getY()][p.getX()] = new Road();
+        mycell[p.getY()][p.getX()] = new Road(new Point(p.getX(), p.getY()));
         break;
       case 'I' :
-        mycell[p.getY()][p.getX()] = new Entrance();
+        mycell[p.getY()][p.getX()] = new Entrance(new Point(p.getX(), p.getY()));
         break;
       case 'O' :
-        mycell[p.getY()][p.getX()] = new Exit();
+        mycell[p.getY()][p.getX()] = new Exit(new Point(p.getX(), p.getY()));
         break;
       case 'P' :
-        mycell[p.getY()][p.getX()] = new Park();
+        mycell[p.getY()][p.getX()] = new Park(new Point(p.getX(), p.getY()));
         break;
       case 'R' :
-        mycell[p.getY()][p.getX()] = new Restaurant();
+        mycell[p.getY()][p.getX()] = new Restaurant(new Point(p.getX(), p.getY()));
         break;
       case 'w' :
-        mycell[p.getY()][p.getX()] = new WaterHabitat(false);
-        break;
-      case 'W' :
-        mycell[p.getY()][p.getX()] = new WaterHabitat(true);
+        mycell[p.getY()][p.getX()] = new WaterHabitat(new Point(p.getX(), p.getY()));
         break;
       case 'a' :
-        mycell[p.getY()][p.getX()] = new AirHabitat(false);
-        break;
-      case 'A' :
-        mycell[p.getY()][p.getX()] = new AirHabitat(true);
+        mycell[p.getY()][p.getX()] = new AirHabitat(new Point(p.getX(), p.getY()));
         break;
       case 'x' :
-        mycell[p.getY()][p.getX()] = new LandHabitat(false);
-        break;
-      case 'X' :
-        mycell[p.getY()][p.getX()] = new LandHabitat(true);
+        mycell[p.getY()][p.getX()] = new LandHabitat(new Point(p.getX(), p.getY()));
         break;
       default :
         assert (false) : "Symbol " + readed + " tidak dikenali.";
