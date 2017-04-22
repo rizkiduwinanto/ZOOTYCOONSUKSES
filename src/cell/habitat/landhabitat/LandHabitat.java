@@ -1,20 +1,39 @@
 package cell.habitat.landhabitat;
 
 import cell.habitat.Habitat;
+import point.Point;
 
-/**
- * Created by AZIS ADI KUNCORO (13515120) on 09/04/2017.
+/** Kelas LandHabitat bertanggung jawab mengelola LandHabitat.
+ * @author AZIS
+ * @version 3.0
  */
+
 public class LandHabitat extends Habitat {
-  public LandHabitat(boolean caged) {
-    super(caged);
+  /** Konstruktor LandHabitat dengan parameter.
+   * @param p Merupakan posisi LandHabitat.
+   */
+  public LandHabitat(Point p) {
+    super(p);
   }
 
-  public final char render() {
-    if (super.caged) {
-      return 'X';
-    } else {
-      return 'x';
-    }
+  /** Metode render untuk kelas Park yang di override dari Kelas Render. */
+  @Override
+  public char render() {
+    return 'x';
+  }
+
+  @Override
+  public boolean isAirHabitat() {
+    return false;
+  }
+
+  @Override
+  public boolean isWaterHabitat() {
+    return false;
+  }
+
+  @Override
+  public boolean isLandHabitat() {
+    return true;
   }
 }

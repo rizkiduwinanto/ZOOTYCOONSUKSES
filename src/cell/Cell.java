@@ -1,13 +1,33 @@
 package cell;
 
 import renderable.Renderable;
+import point.Point;
 
-/**
- * Created by AZIS ADI KUNCORO (13515120) on 22/04/2017.
+/** Kelas Cell bertanggung jawab atas kebutuhan-kebutuhan cell.
+ * @author AZIS ADI KUNCORO (13515120)
+ * @version 3.0
  */
-public abstract class Cell implements Renderable {
+public abstract class Cell implements Renderable  {
+  private Point position;
 
-  public Cell() {
+  /** Konstruktor Cell dengan Parameter Point.
+   * @param p Merupakan posisi suatu Cell.
+   */
+  public Cell(Point p) {
+    position = new Point(p.getX(),p.getY());
   }
 
+  /** Setter Posisi suatu Cell.
+   * @param p Merupakan posisi baru untuk Cell.
+   */
+  public void setPos(Point p) {
+    position = new Point(p.getX(),p.getY());
+  }
+
+  /** Getter Posisi suatu Cell.
+   * @return Mengembalikan posisi Cell.
+   */
+  public Point getPos() {
+    return position;
+  }
 }

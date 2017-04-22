@@ -1,17 +1,23 @@
 package cell.facility.park;
 
 import cell.facility.Facility;
+import point.Point;
 
-/**
- * Created by AZIS ADI KUNCORO (13515120) on 22/04/2017.
+/** Kelas Park bertanggung jawab mengelola Park.
+ * @author AZIS ADI KUNCORO (13515120)
+ * @version 3.0
  */
 public class Park extends Facility {
-
-  public Park() {
-
+  /** Konstruktor Park dengan parameter.
+   * @param p Merupakan posisi Park.
+   */
+  public Park(Point p) {
+    super(p);
   }
 
-  public final char render() {
-    return 'P';
+  /** Metode render untuk kelas Park yang di override dari Kelas Render. */
+  @Override
+  public char render() {
+    return '#';
   }
 }

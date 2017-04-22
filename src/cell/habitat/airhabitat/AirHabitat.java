@@ -1,20 +1,39 @@
 package cell.habitat.airhabitat;
 
 import cell.habitat.Habitat;
+import point.Point;
 
-/**
- * Created by AZIS ADI KUNCORO (13515120) on 09/04/2017.
+/** Kelas AirHabitat bertanggunjawab mengelola AirHabitat.
+ * @author AZIS ADI KUNCORO (13515120)
+ * @version 3.0
  */
-public final class AirHabitat extends Habitat {
-  public AirHabitat(boolean caged) {
-    super(caged);
+
+public class AirHabitat extends Habitat {
+  /** Konstruktor AirHabitat dengan parameter.
+   * @param p Merupakan posisi AirHabitat.
+   */
+  public AirHabitat(Point p) {
+    super(p);
   }
 
-  public final char  render() {
-    if (super.caged) {
-      return 'A';
-    } else {
-      return 'a';
-    }
+  /** Metode render untuk kelas AirHabitat yang di override dari Kelas Render. */
+  @Override
+  public char render() {
+    return 'a';
+  }
+
+  @Override
+  public boolean isAirHabitat() {
+    return true;
+  }
+
+  @Override
+  public boolean isWaterHabitat() {
+    return false;
+  }
+
+  @Override
+  public boolean isLandHabitat() {
+    return false;
   }
 }

@@ -1,23 +1,36 @@
 package cell.habitat;
 
 import cell.Cell;
-import renderable.Renderable;
+import animal.Animal;
+import point.Point;
 
-/**
- * Created by AZIS ADI KUNCORO (13515120) on 09/04/2017.
+/** Kelas Habitat bertanggung jawab mengelola habitat.
+ * @author AZIS ADI KUNCORO (13515120)
+ * @version 3.0
  */
 public abstract class Habitat extends Cell {
-  protected boolean caged;
+  private Animal hewan;
 
-  public Habitat(boolean c) {
-    caged = c;
+  /** Konstruktor Habitat dengan parameter.
+   * @param p Merupakan posisi Habitat.
+   */
+  public Habitat(Point p) {
+    super(p);
+    hewan = null;
   }
 
-  public final void setCageStatus(boolean cage) {
-    caged = cage;
-  }
+  /**
+   *  Method abstrak predikat apakah suatu habitat adalah AirHabitat.
+   */
+  public abstract boolean isAirHabitat();
 
-  public final boolean getCageStatus() {
-    return caged;
-  }
+  /**
+   *  Method abstrak predikat apakah suatu habitat adalah WaterHabitat.
+   */
+  public abstract boolean isWaterHabitat();
+
+  /**
+   *  Method abstrak predikat apakah suatu habitat adalah LandHabitat.
+   */
+  public abstract boolean isLandHabitat();
 }
