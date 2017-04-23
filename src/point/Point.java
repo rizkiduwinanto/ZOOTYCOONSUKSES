@@ -29,8 +29,8 @@ public class Point {
 
   /* ========= */
 
-  public final void display() {
-    System.out.println("[ " + getX() + " , " + getY() + " ]");
+  @Override
+  public String toString() {
+    return ("[ " + getX() + " , " + getY() + " ]");
   }
-
 }
