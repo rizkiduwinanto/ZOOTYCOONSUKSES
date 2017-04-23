@@ -1,4 +1,3 @@
-import cage.Cage;
 import loader.Loader;
 import point.Point;
 import zoo.Zoo;
