@@ -28,6 +28,6 @@ public class HiuPutihBesar extends WaterAnimal {
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
   public void interact() {
-    System.out.println("Paus Orca : *Playing Jaws Soundtrack*");
+    System.out.println("Hiu Putih Besar : *Playing Jaws Soundtrack*");
   }
 }

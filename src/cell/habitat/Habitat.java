@@ -33,4 +33,18 @@ public abstract class Habitat extends Cell {
    *  Method abstrak predikat apakah suatu habitat adalah LandHabitat.
    */
   public abstract boolean isLandHabitat();
+
+  /**
+   * Getter Animal.
+   */
+  public Animal getHewan() {
+    return hewan;
+  }
+
+  /**
+   * Setter Animal
+   */
+  public void addHewan(Animal hewan) {
+    this.hewan = hewan;
+  }
 }
