@@ -19,8 +19,8 @@ public class Zebra extends LandAnimal {
     loc = new Point(x, y);
     beratBadan = beratHewan;
     buas = isBuas;
-    herbivor = false;
-    karnivor = true;
+    herbivor = true;
+    karnivor = false;
     porsiSemuaHewan += (float) (0.05 * beratBadan);
   }
 

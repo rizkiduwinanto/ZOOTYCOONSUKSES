@@ -26,7 +26,6 @@ public class Zoo {
     brs = baris;
     kol = kolom;
     mycell = new Cell[brs][kol];
-
   }
 
   /* ==SETTER== */

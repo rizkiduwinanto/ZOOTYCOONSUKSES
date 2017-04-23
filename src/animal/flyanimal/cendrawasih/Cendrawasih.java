@@ -21,6 +21,8 @@ public class Cendrawasih extends FlyAnimal {
     beratBadan = beratHewan;
     buas = isBuas;
     porsiSemuaHewan += (float) (0.05 * beratBadan);
+    herbivor = true;
+    karnivor = false;
   }
 
   /** I.S Current objek terdefinisi
