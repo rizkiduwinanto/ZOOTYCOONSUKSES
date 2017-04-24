@@ -18,6 +18,8 @@ public class Zoo {
   private final int brs;
   private final int kol;
   private Cell[][] mycell;
+  private Point entrance;
+  private Point exit;
 
   public Zoo(int baris, int kolom) {
     assert (baris >= 0) : "Nilai baris tidak boleh negatif";
@@ -73,7 +75,41 @@ public class Zoo {
   public final int getKolom() {
     return kol;
   }
-
+  
+  /**
+   * Getter Entrance suato Zoo.
+   * @return entrance
+   */
+  public Point getEntrance() {
+    return entrance;
+  }
+    
+  /**
+   * Getter Exit suatu Zoo.
+   * @return exit
+   */
+  public Point getExit() {
+    return exit;
+  }
+  
+  /**
+   * Setter entrance suatu Zoo.
+   * @param p merupakan posisi baru untuk entrance
+   */
+  
+  public void setEntrance(Point p) {
+    entrance = new Point(p.getX(), p.getY());
+  }
+  
+  /**
+   * Setter exit suatu Zoo.
+   * @param p merupakan posisi baru untuk exit
+   */
+  
+  public void setExit(Point p) {
+    exit = new Point(p.getX(), p.getY());
+  }
+  
   public final Cell getCell(Point p) {
     assert (p.getY() >= 0 && p.getY() < brs) : "Batas ordinat / baris melewati constraint !";
     assert (p.getX() >= 0 && p.getX() < kol) : "Batas absis / kolom melewati constraint !";
