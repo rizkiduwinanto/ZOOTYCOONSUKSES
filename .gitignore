@@ -7,3 +7,8 @@ out/
 *.mf
 nbproject/
 /bin/
+
+.settings
+.classpath
+*.jar
+*.zip
