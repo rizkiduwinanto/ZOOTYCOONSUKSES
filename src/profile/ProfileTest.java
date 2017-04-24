@@ -2,6 +2,8 @@ package profile;
 
 import java.util.ArrayList;
 import junit.framework.TestCase;
+import profile.model.ProfileModel;
+
 import org.junit.Test;
 
 /**
@@ -9,7 +11,7 @@ import org.junit.Test;
  */
 public class ProfileTest extends TestCase {
   private ArrayList<String> acv = new ArrayList<String>();
-  private Profile testProfile = new Profile("Azis",1000,"Ciburbur",10,acv);
+  private ProfileModel testProfile = new ProfileModel("Azis",1000,"Ciburbur",10,acv);
 
   @Test
   public void testGetNamaPemilik() throws Exception {
