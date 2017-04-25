@@ -1,20 +1,11 @@
-package tourview;
+package mainview;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 import java.awt.Font;
 import java.awt.Color;
 
@@ -23,16 +14,10 @@ import zoo.Zoo;
 
 import java.awt.Component;
 import javax.swing.JTextPane;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.border.CompoundBorder;
-import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -60,8 +45,8 @@ public class TourView extends JFrame {
     EventQueue.invokeLater(new Runnable() {
       public void run() {
         try {
-          new TourController();
-          // TourController frame = new TourController();
+        	TourView frame = new TourView();
+			frame.setVisible(true);
         } catch (Exception e) {
           e.printStackTrace();
         }
@@ -148,7 +133,7 @@ public class TourView extends JFrame {
     mntmNewMenuItem_3 = new JMenuItem("Profile");
     mnNewMenu.add(mntmNewMenuItem_3);
     
-    mntmNewMenuItem_4= new JMenuItem("Exit");
+    mntmNewMenuItem_4= new JMenuItem("Main Menu");
     mnNewMenu.add(mntmNewMenuItem_4);
   }
   

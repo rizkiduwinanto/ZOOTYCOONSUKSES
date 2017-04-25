@@ -1,7 +1,5 @@
 package cell.habitat.landhabitat;
 
-import static org.junit.Assert.assertEquals;
-
 import animal.Animal;
 import animal.flyanimal.bangau.Bangau;
 import cell.habitat.landhabitat.LandHabitat;

@@ -1,11 +1,11 @@
-package profile.model;
+package profile;
 
 import java.util.ArrayList;
 
 /**
  * Created by AZIS ADI KUNCORO (13515120) on 22/04/2017.
  */
-public class ProfileModel {
+public class Profile {
   private String namaPemilik;
   private long uang;
   private String namaZoo;
@@ -20,7 +20,7 @@ public class ProfileModel {
    * @param jumlahAnimal jumlah animal yang dimiliki
    * @param achievement achievement - achievement yang dimiliki
    */
-  public ProfileModel (String namaPemilik, long uang, String namaZoo, int jumlahAnimal, ArrayList<String> achievement){
+  public Profile (String namaPemilik, long uang, String namaZoo, int jumlahAnimal, ArrayList<String> achievement){
     this.namaPemilik = namaPemilik;
     this.uang = uang;
     this.namaZoo = namaZoo;

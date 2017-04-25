@@ -1,4 +1,4 @@
-package tourview;
+package mainmodel;
 
 import loader.Loader;
 import zoo.Zoo;
@@ -15,7 +15,7 @@ public class TourModel {
    * Constructor Tour Model.
    */
   public TourModel() {
-    myZoo = Loader.loadZoo();
+    //myZoo = Loader.loadZoo();
   }
   
   /**

@@ -1,4 +1,4 @@
-package viewzoo;
+package mainmodel;
 
 import loader.Loader;
 import zoo.Zoo;

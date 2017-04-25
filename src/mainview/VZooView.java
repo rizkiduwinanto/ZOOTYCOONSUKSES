@@ -1,4 +1,4 @@
-package viewzoo;
+package mainview;
 
 import java.awt.EventQueue;
 
@@ -19,6 +19,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")
 public class VZooView extends JFrame {
 
   private JPanel contentPane;
@@ -35,7 +36,8 @@ public class VZooView extends JFrame {
     EventQueue.invokeLater(new Runnable() {
       public void run() {
         try {
-          new VZooController();
+        	VZooView frame = new VZooView();
+			frame.setVisible(true);
         } catch (Exception e) {
           e.printStackTrace();
         }
@@ -67,7 +69,7 @@ public class VZooView extends JFrame {
     mntmNewMenuItem_2 = new JMenuItem("Profile");
     mnNewMenu.add(mntmNewMenuItem_2);
     
-    mntmNewMenuItem_3 = new JMenuItem("Exit");
+    mntmNewMenuItem_3 = new JMenuItem("Main Menu");
     mnNewMenu.add(mntmNewMenuItem_3);
     contentPane = new JPanel();
     contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -33,7 +33,7 @@ public class BuildModeController {
     view = buildModeView;
     
     initAllViewListener();
-	initAllViewPosition();
+	  initAllViewPosition();
     //Cek dia pakai kelas yang mana
     if (view.getClass() == buildModeView.getClass()) {
       ((BuildModeView) view).setVisible(true);
