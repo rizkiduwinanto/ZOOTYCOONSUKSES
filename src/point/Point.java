@@ -33,4 +33,13 @@ public class Point {
   public String toString() {
     return ("[ " + getX() + " , " + getY() + " ]");
   }
+  
+  /** 
+   * Memeriksa apakah kedua point tersebut sama
+   * @param P2 Point kedua yang akan dibandingkan
+   * @return isEqual
+   */
+  public boolean isEqual(Point P2){
+    return (getX()==P2.getX() && getY()==P2.getY());
+  }
 }
