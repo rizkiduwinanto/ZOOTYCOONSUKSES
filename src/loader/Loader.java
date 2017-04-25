@@ -53,7 +53,7 @@ public class Loader {
       int baris = readed.length();
       myZoo = new Zoo(baris,baris);
       for (int i = 0; i < baris; i++) {
-        for (int j = 0; j < baris; j ++) {
+        for (int j = 0; j < baris; j++) {
           myZoo.setCellType(new Point(j,i),readed.charAt(j));
         }
         if (i < baris - 1) {
@@ -66,8 +66,10 @@ public class Loader {
 
     //Melakukan load terhadap animal
     /* UNIMPLEMENTED */
-
+    
+   
     System.out.println("Profile " + profilename + " successfully loaded !");
+   
     return myZoo;
   }
 }

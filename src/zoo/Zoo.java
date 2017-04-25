@@ -43,7 +43,7 @@ public class Zoo {
       case 'O' :
         mycell[p.getY()][p.getX()] = new Exit(new Point(p.getX(), p.getY()));
         break;
-      case 'P' :
+      case '#' :
         mycell[p.getY()][p.getX()] = new Park(new Point(p.getX(), p.getY()));
         break;
       case 'R' :
@@ -121,6 +121,7 @@ public class Zoo {
   public final void display() {
     for (int i = 0; i < brs; i++) {
       for (int j = 0; j < kol; j++) {
+    	System.out.print(""+i+" "+j);
         System.out.print(getCell(new Point(j,i)).render());
         if (j == kol - 1) {
           System.out.println("");

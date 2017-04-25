@@ -127,7 +127,7 @@ public class VZooView extends JFrame {
     assert(myZoo.getBaris() == 25) : "Baris dari matrisk of cell pada zoo harus 25";
     for (int i = 0; i < myZoo.getBaris(); i++) {
       for (int j = 0; j < myZoo.getKolom(); j++) {
-        table.getModel().setValueAt(myZoo.getCell(new Point(j,i)).render(),j,i);
+        table.getModel().setValueAt(myZoo.getCell(new Point(j,i)).render(),i,j);
       }
     }
   }
