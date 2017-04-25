@@ -11,15 +11,31 @@ public class BuildModeController {
   Object view;
   Object model;
   BuildModeView buildModeView = new BuildModeView();
+  
   BuildModeModel buildModeModel = new BuildModeModel();
+  CalcView calcView = new CalcView();
+  CalcModel calcModel = new CalcModel();
 
+  public void initAllViewListener() {
+	  buildModeView.addAllListener(new BuildModeListener());
+	  calcView.addCalcButtonListener(new CalcListener());
+  }
+  
+  public void initAllViewPosition() {
+	  calcView.setLocationRelativeTo(null);
+	  buildModeView.setLocationRelativeTo(null);
+  }
+  
   public BuildModeController() {
+	
+	//Default frame
     model = buildModeModel;
     view = buildModeView;
-
+    
+    initAllViewListener();
+	initAllViewPosition();
     //Cek dia pakai kelas yang mana
     if (view.getClass() == buildModeView.getClass()) {
-      ((BuildModeView) view ).addAllListener(new BuildModeListener());
       ((BuildModeView) view).setVisible(true);
     } else {
 
@@ -43,11 +59,35 @@ public class BuildModeController {
       } else if (e.getSource() == ((BuildModeView) view ).getBtnChangeCellType()) {
         JOptionPane.showMessageDialog(((BuildModeView) view ), "CHANGE CELL TYPE");
       } else if (e.getSource() == ((BuildModeView) view ).getMntmNewMenuItem()) {
-        JOptionPane.showMessageDialog(((BuildModeView) view ), "TUR VIEW");
+        //JOptionPane.showMessageDialog(((BuildModeView) view ), "TUR VIEW");
+        //--Edit
+        ((BuildModeView)view).setVisible(false);
+        model = calcModel;
+        view = calcView;
+        ((CalcView) view).setVisible(true);
+        //--ediT
       } else if (e.getSource() == ((BuildModeView) view ).getMntmProfile()) {
         JOptionPane.showMessageDialog(((BuildModeView) view ),"PROFILE VIEW");
       } else if (e.getSource() == ((BuildModeView) view ).getMntmViewZoo()) {
         JOptionPane.showMessageDialog(((BuildModeView) view ), "VIEW ZOO VIEW");
+      }
+    }
+  }
+
+  private class CalcListener implements ActionListener {
+    public void actionPerformed(ActionEvent e){
+
+      if (e.getSource() == ((CalcView) view).getCalcButton()) {
+        ((CalcModel) model).calc(((CalcView) view).getFirstNum(),((CalcView) view).getSecondNum());
+        ((CalcView) view).setResult(((CalcModel) model).getCalcValue());
+        //Edit--
+        ((CalcView) view).setVisible(false);
+        model = buildModeModel;
+        view = buildModeView;
+        ((BuildModeView) view).setVisible(true);
+        //--ediT
+      } else {
+        System.out.println("No");
       }
     }
   }
