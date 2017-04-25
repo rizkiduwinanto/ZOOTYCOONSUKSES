@@ -26,6 +26,7 @@ public class MenuView extends JFrame {
 	private JButton btnNewGame;
 	private JButton btnLoad;
 	private JButton btnExit;
+	private ImageIcon imgThisImg;
 	/**
 	 * Launch the application.
 	 */
@@ -75,17 +76,20 @@ public class MenuView extends JFrame {
 		btnExit.setBounds(310, 178, 89, 23);
 		contentPane.add(btnExit);
 		
-		/*BufferedImage image = null;
-		try {
-			image = ImageIO.read(getClass().getResource("/img/logozoo.PNG"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		ImageIcon img = new ImageIcon(image);
-		JLabel labelImage = new JLabel();
-		labelImage.setBounds(0, 145, 374, -145);
-		contentPane.add(labelImage);*/
+
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(10, 11, 414, 156);
+		
+		imgThisImg = new ImageIcon("img/menuimg.jpg");
+		lblNewLabel.setIcon(imgThisImg);
+		
+		contentPane.add(lblNewLabel);
+		
+		
+		
+		
+		
+		
 	}
 	
 	public JButton getBtnNewGame() {

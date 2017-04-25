@@ -31,9 +31,9 @@ public class MainController {
 	 * Constructor Main Controller.
 	 */
 	public MainController() {
-		view = profileView;
-		model = profileModel;  
-		((ProfileView)view).setVisible(true);
+		view = menuView;
+		model = menuModel;  
+		((MenuView)view).setVisible(true);
 		initAllViewListener();
 	}
 	public void initAllViewListener() {
