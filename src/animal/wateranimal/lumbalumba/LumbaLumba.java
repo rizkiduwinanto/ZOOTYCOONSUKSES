@@ -27,7 +27,13 @@ public class LumbaLumba extends WaterAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Lumba-Lumba : Tktktktktktk");
+  public String interact() {
+    return ("Lumba-Lumba : Tktktktktktk");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('L');
   }
 }

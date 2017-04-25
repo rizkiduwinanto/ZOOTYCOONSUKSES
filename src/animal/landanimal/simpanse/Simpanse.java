@@ -27,7 +27,13 @@ public class Simpanse extends LandAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Simpanse : *Garuk2*");
+  public String interact() {
+    return ("Simpanse : *Garuk2*");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('P');
   }
 }

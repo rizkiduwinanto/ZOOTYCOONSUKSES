@@ -27,7 +27,13 @@ public class PausPembunuh extends WaterAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Paus Orca : WIUWIUWIUWWW!!");
+  public String interact() {
+    return ("Paus Orca : WIUWIUWIUWWW!!");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('N');
   }
 }

@@ -27,7 +27,13 @@ public class Zebra extends LandAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Zebra : YipYip");
+  public String interact() {
+    return ("Zebra : YipYip");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('Z');
   }
 }

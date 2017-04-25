@@ -27,7 +27,13 @@ public class ElangBotak extends FlyAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Elang Botak : Kwaaaawk Kwaaaak");
+  public String interact() {
+    return("Elang Botak : Kwaaaawk Kwaaaak");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('E');
   }
 }

@@ -27,7 +27,13 @@ public class HiuPutihBesar extends WaterAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Hiu Putih Besar : *Playing Jaws Soundtrack*");
+  public String interact() {
+    return ("Hiu Putih Besar : *Playing Jaws Soundtrack*");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('G');
   }
 }

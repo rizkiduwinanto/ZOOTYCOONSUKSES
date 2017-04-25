@@ -27,7 +27,13 @@ public class BeruangMadu extends LandAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Beruang Madu : Growl");
+  public String interact() {
+    return("Beruang Madu : Growl");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('U');
   }
 }

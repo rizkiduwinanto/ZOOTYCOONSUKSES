@@ -43,6 +43,13 @@ public abstract class Animal {
     return loc;
   }
 
+  /** Setter.
+   *  @param location point untuk merubah posisi hewan
+   */
+  public void setLocation(Point location) {
+    loc = location;
+  }
+
   /** Getter.
    * Fungsi mengembalikan berat badan hewan
    * @return beratBadan
@@ -117,5 +124,9 @@ public abstract class Animal {
 
   /** Prosedur abstrak interact yang akan diimplementasikan di kelas riil hewan.
    */
-  public abstract void interact();
+  public abstract String interact();
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public abstract char render();
 }

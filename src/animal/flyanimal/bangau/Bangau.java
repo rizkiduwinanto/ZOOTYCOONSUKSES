@@ -27,7 +27,13 @@ public class Bangau extends FlyAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Bangau: Wkaktktktktktkk Wkaattktktktk");
+  public String interact() {
+    return("Bangau: Wkaktktktktktkk Wkaattktktktk");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('B');
   }
 }

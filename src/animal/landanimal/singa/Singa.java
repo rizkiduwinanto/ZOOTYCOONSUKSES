@@ -27,7 +27,13 @@ public class Singa extends LandAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Singa : Roaarr");
+  public String interact() {
+    return ("Singa : Roaarr");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('S');
   }
 }

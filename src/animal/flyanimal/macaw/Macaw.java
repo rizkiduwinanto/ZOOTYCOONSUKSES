@@ -27,7 +27,13 @@ public class Macaw extends FlyAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Macaw : Raaaak.. Raaaak");
+  public String interact() {
+    return("Macaw : Raaaak.. Raaaak");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('W');
   }
 }

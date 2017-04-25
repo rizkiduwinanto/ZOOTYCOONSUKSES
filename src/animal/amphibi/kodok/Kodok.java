@@ -28,7 +28,13 @@ public class Kodok extends Amphibi {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Kodok: Teot Teblung! Teot teblung! Teotteotteblung");
+  public String interact() {
+    return("Kodok: Teot Teblung! Teot teblung! Teotteotteblung");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('K');
   }
 }

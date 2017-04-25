@@ -27,7 +27,13 @@ public class Harimau extends LandAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Harimau : Grrrrr");
+  public String interact() {
+    return("Harimau : Grrrrr");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('H');
   }
 }

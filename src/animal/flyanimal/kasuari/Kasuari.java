@@ -27,7 +27,13 @@ public class Kasuari extends FlyAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Kasuari : Hwok hwok whok whok whok");
+  public String interact() {
+    return("Kasuari : Hwok hwok whok whok whok");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('R');
   }
 }

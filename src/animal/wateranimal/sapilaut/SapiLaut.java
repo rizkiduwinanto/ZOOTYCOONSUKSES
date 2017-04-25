@@ -27,7 +27,13 @@ public class SapiLaut extends WaterAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Sapi Laut : *Smashed Aquarium Glass*");
+  public String interact() {
+    return ("Sapi Laut : *Smashed Aquarium Glass*");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('I');
   }
 }

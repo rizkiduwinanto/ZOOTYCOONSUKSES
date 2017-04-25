@@ -27,8 +27,14 @@ public class Komodo extends LandAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Komodo : *Makan Ayam*");
+  public String interact() {
+    return ("Komodo : *Makan Ayam*");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('D');
   }
 }
 

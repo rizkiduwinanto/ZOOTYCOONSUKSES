@@ -27,7 +27,13 @@ public class Merak extends FlyAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Merak : We'oook  We'oook");
+  public String interact() {
+    return("Merak : We'oook  We'oook");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('M');
   }
 }

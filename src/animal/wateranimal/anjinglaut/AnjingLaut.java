@@ -27,7 +27,12 @@ public class AnjingLaut extends WaterAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Anjing Laut : Auuhg...Auuuhg ");
+  public String interact() { return ("Anjing Laut : Auuhg...Auuuhg ");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('L');
   }
 }

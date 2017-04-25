@@ -27,7 +27,13 @@ public class KelelawarVampir extends FlyAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Kelelawar Vampir : Wkaktktktktktkk Wkaattktktktk");
+  public String interact() {
+    return("Kelelawar Vampir : Wkaktktktktktkk Wkaattktktktk");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('V');
   }
 }

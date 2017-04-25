@@ -27,7 +27,13 @@ public class Beo extends FlyAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Beo : ...... ");
+  public String interact() {
+    return("Beo : ...... ");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('O');
   }
 }

@@ -28,7 +28,13 @@ public class PinguinEmperor extends Amphibi {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Pinguin Emperor : Krrr...Tot! Krrr....Tot!");
+  public String interact() {
+    return("Pinguin Emperor : Krrr...Tot! Krrr....Tot!");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('T');
   }
 }

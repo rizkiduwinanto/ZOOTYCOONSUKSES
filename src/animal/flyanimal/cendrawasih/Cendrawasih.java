@@ -28,7 +28,12 @@ public class Cendrawasih extends FlyAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("Cendrawasih : ciuwwwhiiiit whuitwhuitwhuit");
+  public String interact() { return("Cendrawasih : ciuwwwhiiiit whuitwhuitwhuit");
+  }
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('C');
   }
 }

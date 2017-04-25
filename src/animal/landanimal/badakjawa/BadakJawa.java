@@ -27,7 +27,11 @@ public class BadakJawa extends LandAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public void interact() {
-    System.out.println("BadakJawa : *Awas Diseruduk*");
+  public String interact() { return ("BadakJawa : *Awas Diseruduk*");}
+
+  /** Fungsi untuk melakukan render di dalam GUI.
+   */
+  public char render() {
+    return('D');
   }
 }
