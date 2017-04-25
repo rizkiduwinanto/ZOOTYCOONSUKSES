@@ -11,10 +11,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -84,11 +80,6 @@ public class MenuView extends JFrame {
 		lblNewLabel.setIcon(imgThisImg);
 		
 		contentPane.add(lblNewLabel);
-		
-		
-		
-		
-		
 		
 	}
 	

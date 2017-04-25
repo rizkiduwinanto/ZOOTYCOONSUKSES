@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
+import mainmodel.BuildModeModel;
+
 /**
  * Created by AZIS ADI KUNCORO (13515120) on 24/04/2017.
  */

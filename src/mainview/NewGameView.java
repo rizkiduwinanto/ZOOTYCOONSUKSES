@@ -15,9 +15,9 @@ public class NewGameView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField pemilikField;
-	private JTextField textField_1;
+	private JTextField namaZooField;
 	private JButton btnBuild;
-
+	private JButton btnCancel;
 	/**
 	 * Launch the application.
 	 */
@@ -58,21 +58,38 @@ public class NewGameView extends JFrame {
 		contentPane.add(pemilikField);
 		pemilikField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(150, 88, 203, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		namaZooField = new JTextField();
+		namaZooField.setBounds(150, 88, 203, 20);
+		contentPane.add(namaZooField);
+		namaZooField.setColumns(10);
 		
 		btnBuild = new JButton("Build");
-		btnBuild.setBounds(173, 146, 89, 23);
+		btnBuild.setBounds(107, 143, 89, 23);
 		contentPane.add(btnBuild);
+		
+		btnCancel = new JButton("Cancel");
+		btnCancel.setBounds(234, 143, 89, 23);
+		contentPane.add(btnCancel);
 	}
 	
 	public JButton getBtnBuild(){
 		return btnBuild;
 	}
 	
+	public JButton getBtnCancel(){
+		return btnCancel;
+	}
+	
+	public JTextField getPemilikField(){
+		return pemilikField;
+	}
+	
+	public JTextField getNamaZooField(){
+		return namaZooField;
+	}
+	
 	public void addAllListener(ActionListener listen){
 		btnBuild.addActionListener(listen);
+		btnCancel.addActionListener(listen);
 	}
 }
