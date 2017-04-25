@@ -58,6 +58,7 @@ public class TourView extends JFrame {
    * Create the frame.
    */
   public TourView() {
+	 
     setPreferredSize(new Dimension(10, 4));
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setBounds(100, 100, 521, 694);

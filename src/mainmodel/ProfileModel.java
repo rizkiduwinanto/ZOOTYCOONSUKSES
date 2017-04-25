@@ -12,9 +12,13 @@ public class ProfileModel {
 	}
 	
 	public void setProfile(String namaPemilik, String namaZoo){
-		long uang = 0;
+		long uang = 1000;
 		int jumlahAnimal = 0;
-		ArrayList<String> arrayList= null;
+		ArrayList<String> arrayList = new ArrayList<>();
+		arrayList.add("Rookie");
+		arrayList.add("Jito");
+		arrayList.add("cibur");
+		arrayList.add("ambyar");
 		profile = new Profile(namaPemilik, uang, namaZoo, jumlahAnimal, arrayList); 
 	}
 	

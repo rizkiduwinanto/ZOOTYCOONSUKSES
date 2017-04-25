@@ -108,10 +108,10 @@ public class MainController {
 			public void actionPerformed(ActionEvent m) {
 				if (m.getSource()==((ProfileView)view).getMenuBuild()){
 					((ProfileView)view).setVisible(false);
-					model = vZooModel;
-					view = vZooView;
-					((VZooView)view).setVisible(true);
-				} else if (m.getSource()==((ProfileView)view).getMenuView()){
+					model = buildModeView;
+					view = buildModeView;
+					buildModeView.setVisible(true);
+				} else if (m.getSource()==((ProfileView)view).getMenuTourView()){
 					((ProfileView)view).setVisible(false);
 					model = tourModel;
 					view = tourView;
@@ -210,9 +210,22 @@ public class MainController {
 		  @Override
 			public void actionPerformed(ActionEvent m) {
 			  if (m.getSource() == ((NewGameView)view).getBtnBuild()){
-				  String profilePemilik = ((NewGameView)view).getPemilikField().getText();
-				  String namaZoo = ((NewGameView)view).getNamaZooField().getText();
-				  ((ProfileModel)model).setProfile(profilePemilik, namaZoo);
+				  String profilePemilik = newGameView.getPemilikField().getText();
+				  String namaZoo = newGameView.getNamaZooField().getText();
+				  profileModel.setProfile(profilePemilik, namaZoo);
+				  newGameView.setVisible(false);
+				  profileModel.setProfile(newGameView.getPemilikField().getText() ,newGameView.getNamaZooField().getText() );
+				  
+				  profileView.setPemilik(profileModel.getProfile().getNamaPemilik());
+				  profileView.setZoo(profileModel.getProfile().getNamaZoo());
+				  profileView.setUang(profileModel.getProfile().getUang());
+				  profileView.setAnimal(profileModel.getProfile().getJumlahAnimal());
+				  profileView.setList(profileModel.getProfile().getAchievement());
+				  
+				  
+				  view = buildModeView;
+				  model = buildModeModel;
+				  buildModeView.setVisible(true);
 				  
 			  } else if (m.getSource() == ((NewGameView)view).getBtnCancel()){
 				  
@@ -221,7 +234,7 @@ public class MainController {
 		}
 		  private class BuildModeListener implements ActionListener {
 			    private BuildModeListener() {
-			      ((BuildModeView) view ).fillTable( ((BuildModeModel) model).getMyZoo());
+			      buildModeView.fillTable( buildModeView.getTable(), buildModeModel.getMyZoo());
 			    }
 
 			    public void actionPerformed(ActionEvent e){
@@ -272,21 +285,20 @@ public class MainController {
 			    			readed = 'x';
 			    		}
 			    		((BuildModeModel) model).getMyZoo().setCellType(new Point(posx,posy), readed);
-			    		((BuildModeView) view ).fillTable(((BuildModeModel) model).getMyZoo());
+			    		((BuildModeView) view ).fillTable(((BuildModeView) view ).getTable(),((BuildModeModel) model).getMyZoo());
 			    	}
 					
 			      } else if (e.getSource() == ((BuildModeView) view ).getMntmNewMenuItem()) {
-			        //JOptionPane.showMessageDialog(((BuildModeView) view ), "TUR VIEW");
-			        //--Edit
-			        /*((BuildModeView)view).setVisible(false);
-			        model = calcModel;
-			        view = calcView;
-			        ((CalcView) view).setVisible(true);*/
-			        //--ediT
+			    	buildModeView.setVisible(false);
+			    	tourView.setVisible(true);
 			      } else if (e.getSource() == ((BuildModeView) view ).getMntmProfile()) {
-			        JOptionPane.showMessageDialog(((BuildModeView) view ),"PROFILE VIEW");
-			      } else if (e.getSource() == ((BuildModeView) view ).getMntmViewZoo()) {
-			        JOptionPane.showMessageDialog(((BuildModeView) view ), "VIEW ZOO VIEW");
+			        view = profileView;
+			        model = profileModel;
+			        buildModeView.setVisible(false);
+			        profileView.setVisible(true);
+			      } else if (e.getSource() == ((BuildModeView) view ).getMntmMenu()) {
+			    	buildModeView.setVisible(false);
+			    	menuView.setVisible(true);
 			      }
 			    }
 			  }

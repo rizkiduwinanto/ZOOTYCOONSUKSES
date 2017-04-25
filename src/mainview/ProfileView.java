@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -20,13 +21,14 @@ public class ProfileView extends JFrame {
 
 	private JPanel contentPane;
 	private JMenuItem mntmBuild;
-	private JMenuItem mntmView;
 	private JMenuItem mntmMenu;
-	private JList<String> list;
+	private JMenuItem mntmTourView;
+	private JList list;
 	private JTextArea txtrNamaPemilik;
 	private JTextArea txtrNamaZoo;
 	private JTextArea txtrUang;
 	private JTextArea txtrJumlahAnimal;
+	private DefaultListModel listModel;
 	/**
 	 * Launch the application.
 	 */
@@ -47,6 +49,7 @@ public class ProfileView extends JFrame {
 	 * Create the frame.
 	 */
 	public ProfileView() {
+		super("Profile");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
@@ -59,10 +62,7 @@ public class ProfileView extends JFrame {
 		mntmBuild = new JMenuItem("Build");
 		mnFile.add(mntmBuild);
 		
-		mntmView = new JMenuItem("View Zoo");
-		mnFile.add(mntmView);
-		
-		JMenuItem mntmTourView = new JMenuItem("Tour View");
+		mntmTourView = new JMenuItem("Tour View");
 		mnFile.add(mntmTourView);
 		
 		mntmMenu = new JMenuItem("Main Menu");
@@ -93,31 +93,42 @@ public class ProfileView extends JFrame {
 		contentPane.add(lblAchievement);
 		
 		txtrNamaPemilik = new JTextArea();
+		txtrNamaPemilik.setEditable(false);
 		txtrNamaPemilik.setBounds(228, 34, 105, 22);
 		contentPane.add(txtrNamaPemilik);
 		
 		txtrNamaZoo = new JTextArea();
+		txtrNamaZoo.setEditable(false);
 		txtrNamaZoo.setBounds(228, 63, 105, 22);
 		contentPane.add(txtrNamaZoo);
 		
 		txtrUang = new JTextArea();
+		txtrUang.setEditable(false);
 		txtrUang.setBounds(228, 93, 105, 22);
 		contentPane.add(txtrUang);
 		
 		txtrJumlahAnimal = new JTextArea();
-		txtrJumlahAnimal.setBounds(228, 126, 115, 22);
+		txtrJumlahAnimal.setEditable(false);
+		txtrJumlahAnimal.setBounds(228, 126, 105, 22);
 		contentPane.add(txtrJumlahAnimal);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(225, 156, 108, 34);
-		contentPane.add(scrollPane);
 		
-		list = new JList<String>();
+		listModel = new DefaultListModel();
+		list = new JList(listModel);
 		scrollPane.setViewportView(list);
+		contentPane.add(scrollPane);
 	}
 	
 	public void setList(ArrayList<String> achieve){
-		list.setListData((String[]) achieve.toArray());
+		if (achieve.size() > 0) {
+			
+			for (String acv : achieve) {
+				listModel.addElement(acv);
+			}
+			list = new JList(listModel);
+		}
 	}
 	
 	public void setPemilik(String pemilik){
@@ -128,7 +139,7 @@ public class ProfileView extends JFrame {
 		txtrNamaZoo.setText(zoo);
 	}
 	
-	public void setUang(int uang){
+	public void setUang(long uang){
 		txtrUang.setText(String.valueOf(uang));
 	}
 	
@@ -140,17 +151,18 @@ public class ProfileView extends JFrame {
 		return mntmBuild;
 	}
 	
-	public JMenuItem getMenuView(){
-		return mntmView;
-	}
 	
 	public JMenuItem getMenuMain(){
 		return mntmMenu;
 	}
 	
+	public JMenuItem getMenuTourView() {
+		return mntmTourView;
+	}
+	
 	public void addAllListener(ActionListener listen){
 		mntmBuild.addActionListener(listen);
-		mntmView.addActionListener(listen);
 		mntmMenu.addActionListener(listen);
+		mntmTourView.addActionListener(listen);
 	}
 }

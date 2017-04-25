@@ -10,7 +10,7 @@ public class VZooModel {
    * Constructor View Zoo Model.
    */
   public VZooModel() {
-    myZoo = Loader.loadZoo();
+    //myZoo = Loader.loadZoo();
   }
   
   /**

@@ -34,10 +34,11 @@ public class BuildModeView extends JFrame {
 	private JTable table;
 	private JMenuBar menuBar;
 	private JMenu mnMode;
-	private JMenuItem mntmNewMenuItem, mntmProfile, mntmViewZoo;
+	private JMenuItem mntmNewMenuItem, mntmProfile;
 	private JButton btnBuyAnimal, btnSellAnimal, btnMoveAnimal, btnChangeCellType;
 	private JLabel lblNewLabel, lblCiburZoo;
 	private ImageIcon imgThisImg;
+	private JMenuItem mntmMenu;
 
 	/**
 	 * Launch the application.
@@ -62,9 +63,9 @@ public class BuildModeView extends JFrame {
 
 		mntmProfile = new JMenuItem("Profile");
 		mnMode.add(mntmProfile);
-
-		mntmViewZoo = new JMenuItem("View Zoo");
-		mnMode.add(mntmViewZoo);
+		
+		mntmMenu = new JMenuItem("Menu");
+		mnMode.add(mntmMenu);
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -174,7 +175,7 @@ public class BuildModeView extends JFrame {
 	 * @param table
 	 * @param myZoo
 	 */
-	public void fillTable(Zoo myZoo) {
+	public void fillTable(JTable table,Zoo myZoo) {
 		assert(myZoo.getKolom() == 25) : "Kolom dari matriks of cell pada zoo harus 25";
 		assert(myZoo.getBaris() == 25) : "Baris dari matrisk of cell pada zoo harus 25";
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -207,7 +208,7 @@ public class BuildModeView extends JFrame {
 		btnChangeCellType.addActionListener(listen);
 		mntmNewMenuItem.addActionListener(listen);
 		mntmProfile.addActionListener(listen);
-		mntmViewZoo.addActionListener(listen);
+		mntmMenu.addActionListener(listen);
 	}
 
 
@@ -227,8 +228,9 @@ public class BuildModeView extends JFrame {
 		return mntmProfile;
 	}
 
-	public JMenuItem getMntmViewZoo() {
-		return mntmViewZoo;
+	
+	public JMenuItem getMntmMenu(){
+		return mntmMenu;
 	}
 
 	public JButton getBtnBuyAnimal() {
