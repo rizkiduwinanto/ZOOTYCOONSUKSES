@@ -20,7 +20,12 @@ public class Zoo {
   private Cell[][] mycell;
   private Point entrance;
   private Point exit;
-
+  
+  /**
+   * Ctor.
+   * @param baris panjang zoo
+   * @param kolom lebar zoo
+   */
   public Zoo(int baris, int kolom) {
     assert (baris >= 0) : "Nilai baris tidak boleh negatif";
     assert (kolom >= 0) : "Nilai kolom tidak boleh negatif";
@@ -31,7 +36,11 @@ public class Zoo {
   }
 
   /* ==SETTER== */
-
+  /**
+   * set tipe cell.
+   * @param p posisi cell
+   * @param readed char yang dibaca
+   */
   public final void setCellType(Point p,char readed) {
     switch (readed) {
       case '.' :
@@ -67,11 +76,18 @@ public class Zoo {
   /* ========= */
 
   /* ==GETTER== */
-
+  /**
+   * getter baris.
+   * @return jumlah baris
+   */
   public final int getBaris() {
     return brs;
   }
 
+  /**
+   * getter jumlah kolom.
+   * @return jumlah kolom
+   */
   public final int getKolom() {
     return kol;
   }
@@ -105,11 +121,15 @@ public class Zoo {
    * Setter exit suatu Zoo.
    * @param p merupakan posisi baru untuk exit
    */
-  
   public void setExit(Point p) {
     exit = new Point(p.getX(), p.getY());
   }
   
+  /**
+   * getter Cell.
+   * @param p titik letak cell
+   * @return Cell yang berada di titik p
+   */
   public final Cell getCell(Point p) {
     assert (p.getY() >= 0 && p.getY() < brs) : "Batas ordinat / baris melewati constraint !";
     assert (p.getX() >= 0 && p.getX() < kol) : "Batas absis / kolom melewati constraint !";
@@ -117,11 +137,13 @@ public class Zoo {
   }
 
   /* ========= */
-
+  /**
+   * merender zoo.
+   */
   public final void display() {
     for (int i = 0; i < brs; i++) {
       for (int j = 0; j < kol; j++) {
-    	System.out.print(""+i+" "+j);
+        System.out.print("" + i + " " + j);
         System.out.print(getCell(new Point(j,i)).render());
         if (j == kol - 1) {
           System.out.println("");

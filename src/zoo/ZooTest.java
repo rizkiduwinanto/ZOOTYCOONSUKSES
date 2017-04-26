@@ -1,10 +1,10 @@
 package zoo;
 
+import static org.junit.Assert.assertEquals;
+
 import cell.habitat.airhabitat.AirHabitat;
 import org.junit.Test;
 import point.Point;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Hishamlazuardi on 24/04/2017.
