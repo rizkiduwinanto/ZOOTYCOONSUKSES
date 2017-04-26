@@ -35,11 +35,11 @@ public class Point {
   }
   
   /** 
-   * Memeriksa apakah kedua point tersebut sama
-   * @param P2 Point kedua yang akan dibandingkan
+   * Memeriksa apakah kedua point tersebut sama.
+   * @param p2 Point kedua yang akan dibandingkan
    * @return isEqual
    */
-  public boolean isEqual(Point P2){
-    return (getX()==P2.getX() && getY()==P2.getY());
+  public boolean isEqual(Point p2) {
+    return (getX() == p2.getX() && getY() == p2.getY());
   }
 }

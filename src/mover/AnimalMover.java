@@ -1,18 +1,18 @@
 package mover;
 
+import animal.Animal;
 import cell.habitat.Habitat;
 import java.util.Random;
 import point.Point;
 import zoo.Zoo;
-import animal.Animal;
 
 /**
- * @author Hisham Lazuardi Yusuf (13515069)
+ * @author Hisham Lazuardi Yusuf (13515069).
  */
 public class AnimalMover {
 
   /**
-   * Constructor Move Animal
+   * Constructor Move Animal.
    */
   public AnimalMover() {}
 
@@ -22,37 +22,36 @@ public class AnimalMover {
    */
   private static int randomMove() {
     Random ranNum = new Random();
-    return(ranNum.nextInt(4));
+    return (ranNum.nextInt(4));
   }
 
   /**
    * Fungsi untuk melakukan pengecekan pemindahan animal valid atau tidak.
-   * @param myZoo
-   * @param num
+   * @param myZoo zoo yang aktif
+   * @param num arah gerakan
    * @return checkMove
    */
   private static boolean checkMove(Zoo myZoo, int num, Point loc) {
     if (num == 1) {
-      return (loc.getX() - 1 >= 0 &&
-          myZoo.getCell(new Point(loc.getX() - 1, loc.getY())) instanceof Habitat);
+      return (loc.getX() - 1 >= 0 
+              && myZoo.getCell(new Point(loc.getX() - 1, loc.getY())) instanceof Habitat);
     } else if (num == 0) {
-      return (loc.getY() - 1 >= 0 &&
-          myZoo.getCell(new Point(loc.getX(), loc.getY() - 1)) instanceof Habitat);
+      return (loc.getY() - 1 >= 0 
+              && myZoo.getCell(new Point(loc.getX(), loc.getY() - 1)) instanceof Habitat);
     } else if (num == 3) {
-      return (loc.getX() + 1 < myZoo.getKolom() &&
-          myZoo.getCell(new Point(loc.getX() + 1, loc.getY())) instanceof Habitat);
+      return (loc.getX() + 1 < myZoo.getKolom() 
+              && myZoo.getCell(new Point(loc.getX() + 1, loc.getY())) instanceof Habitat);
     } else {
-      return (loc.getY() + 1 < myZoo.getBaris() &&
-          myZoo.getCell(new Point(loc.getX(), loc.getY() + 1)) instanceof Habitat);
+      return (loc.getY() + 1 < myZoo.getBaris()
+              && myZoo.getCell(new Point(loc.getX(), loc.getY() + 1)) instanceof Habitat);
     }
   }
-
+  
   /**
-   *
    * I.S. myZoo dan hewan terdefinisi
    * F.S. hewan berhasil berpindah di dalam myZoo
-   * @param myZoo
-   * @param hewan
+   * @param myZoo zoo yang aktif
+   * @param hewan hewan yang digerakkan
    */
   public static void moveAnimal(Zoo myZoo, Animal hewan) {
     int randomNum = -1;

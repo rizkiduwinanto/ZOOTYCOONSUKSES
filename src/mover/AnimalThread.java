@@ -15,15 +15,21 @@ import zoo.Zoo;
  */
 public class AnimalThread extends Thread {
   private Animal hewan;
-  private Zoo mZoo;
+  private Zoo myZoo;
   private String nama;
-
+  
+  /**
+  * Ctor Thread Animal
+  * @param name nama hewan.
+  * @param myZoo zoo aktif
+  * @param hewan objek hewan
+  */
   public AnimalThread(String name, Zoo myZoo, Animal hewan) {
     super(name);
     nama = name;
     System.out.println(name + "created");
     this.hewan = hewan;
-    mZoo = myZoo;
+    this.myZoo = myZoo;
     ((Habitat) myZoo.getCell(
         new Point(hewan.getLocation().getX(), hewan.getLocation().getY()))).addHewan(hewan);
   }
@@ -33,7 +39,7 @@ public class AnimalThread extends Thread {
   }
 
   public synchronized void threadMoveAnimal() {
-    AnimalMover.moveAnimal(mZoo, hewan);
+    AnimalMover.moveAnimal(myZoo, hewan);
   }
 
   @Override
@@ -44,29 +50,32 @@ public class AnimalThread extends Thread {
       System.out.println(hewan.getLocation());
       try {
         Thread.sleep(1000);
+      } catch (Exception e) {
+        System.out.println("No Sleep");
       }
-      catch (Exception e) {}
     }
   }
-
+  
+  /**
+   * main method driver thread.
+   * @param args null
+   */
   public static void main(String[] args) {
     Animal hewan1 = new Kodok(2, 2, 15, false);
     Animal hewan2 = new BadakJawa(1, 1, 150, false);
     Animal hewan3 = new Singa(9, 1, 100, true);
     Zoo myZoo = Loader.loadZoo(ProfileModel.getProfileName());
-    AnimalThread T1 = new AnimalThread("T1", myZoo, hewan1);
-    AnimalThread T2 = new AnimalThread("T2", myZoo, hewan2);
+    AnimalThread t1 = new AnimalThread("T1", myZoo, hewan1);
+    AnimalThread t2 = new AnimalThread("T2", myZoo, hewan2);
     //AnimalThread T3 = new AnimalThread("T3", myZoo, hewan3);
-    T1.start();
-    T2.start();
+    t1.start();
+    t2.start();
     //T3.start();
-
     try {
-      T1.join();
-      T2.join();
+      t1.join();
+      t2.join();
       //T3.join();
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       System.out.println("Interrupted");
     }
   }

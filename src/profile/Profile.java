@@ -13,14 +13,18 @@ public class Profile {
   private ArrayList<String> achievement;
 
   /**
-   * Konstruktor parameter dari kelas Profile
+   * Konstruktor parameter dari kelas Profile.
    * @param namaPemilik nama dari pemilik zoo
    * @param uang jumlah uang yang dimiiliki
    * @param namaZoo nama dari sebuah zoo
    * @param jumlahAnimal jumlah animal yang dimiliki
    * @param achievement achievement - achievement yang dimiliki
    */
-  public Profile (String namaPemilik, long uang, String namaZoo, int jumlahAnimal, ArrayList<String> achievement){
+  public Profile(String namaPemilik, 
+                 long uang, 
+                 String namaZoo, 
+                 int jumlahAnimal, 
+                 ArrayList<String> achievement) {
     this.namaPemilik = namaPemilik;
     this.uang = uang;
     this.namaZoo = namaZoo;
@@ -29,7 +33,7 @@ public class Profile {
   }
 
   /**
-   * Getter nama pemilik
+   * Getter nama pemilik.
    * @return namaPemilik
    */
   public String getNamaPemilik() {
@@ -37,7 +41,7 @@ public class Profile {
   }
 
   /**
-   * Getter uang
+   * Getter uang.
    * @return uang
    */
   public long getUang() {
@@ -45,7 +49,7 @@ public class Profile {
   }
 
   /**
-   * Getter nama zoo
+   * Getter nama zoo.
    * @return namaZoo
    */
   public String getNamaZoo() {
@@ -53,7 +57,7 @@ public class Profile {
   }
 
   /**
-   * Getter jumlah animal
+   * Getter jumlah animal.
    * @return jumlahAnimal
    */
   public int getJumlahAnimal() {
@@ -61,7 +65,7 @@ public class Profile {
   }
 
   /**
-   * Getter achievement
+   * Getter achievement.
    * @return achievement
    */
   public ArrayList<String> getAchievement() {
@@ -69,7 +73,7 @@ public class Profile {
   }
 
   /**
-   * Menambah uang sekarang sebanyak nominalIncrease
+   * Menambah uang sekarang sebanyak nominalIncrease.
    * @param nominalIncrease jumlah uang yang akan ditambah
    */
   public void increaseUang(int nominalIncrease) {
@@ -77,7 +81,7 @@ public class Profile {
   }
 
   /**
-   * Mengurangi uang sekarang sebanyak nominalDecrease
+   * Mengurangi uang sekarang sebanyak nominalDecrease.
    * @param nominalDecrease jumlah uang yang akan dikurangi
    */
   public void decreaseUang(int nominalDecrease) {
@@ -85,7 +89,7 @@ public class Profile {
   }
 
   /**
-   * Menambahkan achievement baru
+   * Menambahkan achievement baru.
    * @param newAchievement achievement baru yang akan ditambahkan
    */
   public void addAchievement(String newAchievement) {
