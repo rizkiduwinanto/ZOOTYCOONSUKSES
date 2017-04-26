@@ -14,69 +14,54 @@ import zoo.Zoo;
  * Created by Hishamlazuardi on 25/04/2017.
  */
 public class AnimalThread extends Thread {
+
   private Animal hewan;
   private Zoo myZoo;
   private String nama;
-  
+  private boolean runnable = true;
+
   /**
-  * Ctor Thread Animal
-  * @param name nama hewan.
-  * @param myZoo zoo aktif
-  * @param hewan objek hewan
-  */
+   * Konstruktor Animal Thread.
+   * @param name atribut nama untuk thread
+   * @param myZoo atribut Zoo untuk pergerakan hewan
+   * @param hewan atribut Animal
+   */
   public AnimalThread(String name, Zoo myZoo, Animal hewan) {
     super(name);
     nama = name;
-    System.out.println(name + "created");
     this.hewan = hewan;
     this.myZoo = myZoo;
-    ((Habitat) myZoo.getCell(
-        new Point(hewan.getLocation().getX(), hewan.getLocation().getY()))).addHewan(hewan);
   }
 
-  public AnimalThread(Animal hewan) {
-    this.hewan = hewan;
-  }
-
+  /**
+   * Prosedur yang digunakan untuk menggerakkan hewan.
+   * I.S. myZoo dan hewan terdefinisi
+   * F.S. hewan berpindah cell dan atribut hewan pada cell yang lama di set null
+   */
   public synchronized void threadMoveAnimal() {
     AnimalMover.moveAnimal(myZoo, hewan);
   }
 
+  /**
+   * Prosedur yang digunakan untuk menghentikan thread.
+   * I.S. nilai runnable terdefinisi
+   * F.S. nilai runnable di set menjadi false
+   */
+  public void kill() {
+    runnable = false;
+  }
+
+  /**
+   * Prosedur yang digunakan untuk memulai thread.
+   */
   @Override
   public void run() {
-    while (true) {
+    while (runnable) {
       threadMoveAnimal();
-      System.out.println(nama);
       System.out.println(hewan.getLocation());
       try {
         Thread.sleep(1000);
-      } catch (Exception e) {
-        System.out.println("No Sleep");
-      }
-    }
-  }
-  
-  /**
-   * main method driver thread.
-   * @param args null
-   */
-  public static void main(String[] args) {
-    Animal hewan1 = new Kodok(2, 2, 15, false);
-    Animal hewan2 = new BadakJawa(1, 1, 150, false);
-    Animal hewan3 = new Singa(9, 1, 100, true);
-    Zoo myZoo = Loader.loadZoo(ProfileModel.getProfileName());
-    AnimalThread t1 = new AnimalThread("T1", myZoo, hewan1);
-    AnimalThread t2 = new AnimalThread("T2", myZoo, hewan2);
-    //AnimalThread T3 = new AnimalThread("T3", myZoo, hewan3);
-    t1.start();
-    t2.start();
-    //T3.start();
-    try {
-      t1.join();
-      t2.join();
-      //T3.join();
-    } catch (Exception e) {
-      System.out.println("Interrupted");
+      } catch (Exception e) { }
     }
   }
 }

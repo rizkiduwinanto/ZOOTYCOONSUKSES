@@ -1,9 +1,9 @@
 package visitor;
 
-import java.util.Stack;
-import point.Point;
 import cell.facility.road.Road;
 import cell.habitat.Habitat;
+import java.util.Stack;
+import point.Point;
 import zoo.Zoo;
 
 public class Visitor {
@@ -67,6 +67,8 @@ public class Visitor {
    
   /**
    * Prosedur yang berguna untuk melakukan tour di dalam Zoo.
+   * I.S. Zoo terdefinisi
+   * F.S. Visitor dapat melakukan tour di dalam zoo
    * @param z Merupakan suatu Zoo
    */
   // Versi 01 Edit Tour
@@ -80,7 +82,7 @@ public class Visitor {
         visited[i][j] = false;
       }
     }
-	    // Tour di dalam Zoo dengan Algoritma DFS
+    // Tour di dalam Zoo dengan Algoritma DFS
     stackOfPoint.push(location);
     while (!stackOfPoint.empty() && !location.isEqual(z.getExit())) {
       location = stackOfPoint.pop();
@@ -105,24 +107,36 @@ public class Visitor {
       }
       //Interact with animals
       
-      if (z.getCell(new Point(location.getX()+1, location.getY())) instanceof Habitat && location.getX()+1 < z.getKolom()) {
-    	  if (((Habitat) z.getCell(new Point(location.getX()+1, location.getY()))).getHewan() != null) {
-    		  ((Habitat) z.getCell(new Point(location.getX()+1, location.getY()))).getHewan().interact();
+      if (z.getCell(new Point(location.getX() + 1, location.getY())) instanceof Habitat
+          && location.getX() + 1 < z.getKolom()) {
+        if (((Habitat) z.getCell(new Point(location.getX() + 1, location.getY()))).getHewan()
+            != null) {
+    		  ((Habitat) z.getCell(new Point(location.getX() + 1, location.getY()))).getHewan()
+              .interact();
+        }
+      }
+      if (z.getCell(new Point(location.getX() - 1, location.getY())) instanceof Habitat
+          && location.getX() - 1 >= 0) {
+    	  if (((Habitat) z.getCell(new Point(location.getX() - 1, location.getY()))).getHewan()
+            != null) {
+    		  ((Habitat) z.getCell(new Point(location.getX() - 1, location.getY()))).getHewan()
+              .interact();
     	  }
       }
-      if (z.getCell(new Point(location.getX()-1, location.getY())) instanceof Habitat && location.getX()-1 >= 0) {
-    	  if (((Habitat) z.getCell(new Point(location.getX()-1, location.getY()))).getHewan() != null) {
-    		  ((Habitat) z.getCell(new Point(location.getX()-1, location.getY()))).getHewan().interact();
+      if (z.getCell(new Point(location.getX(), location.getY() + 1)) instanceof Habitat
+          && location.getY() + 1 < z.getBaris()) {
+    	  if (((Habitat) z.getCell(new Point(location.getX(), location.getY() + 1))).getHewan()
+            != null) {
+    		  ((Habitat) z.getCell(new Point(location.getX(), location.getY() + 1))).getHewan()
+              .interact();
     	  }
       }
-      if (z.getCell(new Point(location.getX(), location.getY()+1)) instanceof Habitat && location.getY()+1 < z.getBaris()) {
-    	  if (((Habitat) z.getCell(new Point(location.getX(), location.getY()+1))).getHewan() != null) {
-    		  ((Habitat) z.getCell(new Point(location.getX(), location.getY()+1))).getHewan().interact();
-    	  }
-      }
-      if (z.getCell(new Point(location.getX(), location.getY()-1)) instanceof Habitat && location.getY()-1 >= 0) {
-    	  if (((Habitat) z.getCell(new Point(location.getX(), location.getY()-1))).getHewan() != null) {
-    		  ((Habitat) z.getCell(new Point(location.getX(), location.getY()-1))).getHewan().interact();
+      if (z.getCell(new Point(location.getX(), location.getY() - 1)) instanceof Habitat
+          && location.getY() - 1 >= 0) {
+    	  if (((Habitat) z.getCell(new Point(location.getX(), location.getY() - 1))).getHewan()
+            != null) {
+    		  ((Habitat) z.getCell(new Point(location.getX(), location.getY() - 1))).getHewan()
+              .interact();
     	  }
       }
     }

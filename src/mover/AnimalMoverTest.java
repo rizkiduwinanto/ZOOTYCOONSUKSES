@@ -7,7 +7,6 @@ import animal.amphibi.kodok.Kodok;
 import cell.habitat.Habitat;
 import loader.Loader;
 import mainmodel.ProfileModel;
-
 import org.junit.Test;
 import point.Point;
 import zoo.Zoo;
@@ -25,8 +24,8 @@ public class AnimalMoverTest {
     assertEquals(hewan, ((Habitat)myZoo.getCell(new Point(3, 5))).getHewan());
     AnimalMover.moveAnimal(myZoo, hewan);
     assertEquals(null, ((Habitat)myZoo.getCell(new Point(3, 5))).getHewan());
-    assertEquals(hewan, ((Habitat)myZoo.getCell(new Point(hewan.getLocation().getX(), 
-                                                        hewan.getLocation().getY()))).getHewan());
+    assertEquals(hewan, ((Habitat)myZoo.getCell(
+        new Point(hewan.getLocation().getX(), hewan.getLocation().getY()))).getHewan());
     System.out.println(hewan.getLocation());
     /*assertEquals(2, hewan.getLocation().getX());
     assertEquals(5, hewan.getLocation().getY());*/

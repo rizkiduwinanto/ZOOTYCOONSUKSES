@@ -27,31 +27,32 @@ public class AnimalMover {
 
   /**
    * Fungsi untuk melakukan pengecekan pemindahan animal valid atau tidak.
-   * @param myZoo zoo yang aktif
-   * @param num arah gerakan
+   * @param myZoo atribut zoo untuk mengecek pergerakan
+   * @param num integer yang berguna untuk melakukan pergerakan
    * @return checkMove
    */
   private static boolean checkMove(Zoo myZoo, int num, Point loc) {
     if (num == 1) {
-      return (loc.getX() - 1 >= 0 
-              && myZoo.getCell(new Point(loc.getX() - 1, loc.getY())) instanceof Habitat);
+      return (loc.getX() - 1 >= 0
+          && myZoo.getCell(new Point(loc.getX() - 1, loc.getY())) instanceof Habitat);
     } else if (num == 0) {
-      return (loc.getY() - 1 >= 0 
-              && myZoo.getCell(new Point(loc.getX(), loc.getY() - 1)) instanceof Habitat);
+      return (loc.getY() - 1 >= 0
+          && myZoo.getCell(new Point(loc.getX(), loc.getY() - 1)) instanceof Habitat);
     } else if (num == 3) {
-      return (loc.getX() + 1 < myZoo.getKolom() 
-              && myZoo.getCell(new Point(loc.getX() + 1, loc.getY())) instanceof Habitat);
+      return (loc.getX() + 1 < myZoo.getKolom()
+          && myZoo.getCell(new Point(loc.getX() + 1, loc.getY())) instanceof Habitat);
     } else {
       return (loc.getY() + 1 < myZoo.getBaris()
-              && myZoo.getCell(new Point(loc.getX(), loc.getY() + 1)) instanceof Habitat);
+          && myZoo.getCell(new Point(loc.getX(), loc.getY() + 1)) instanceof Habitat);
     }
   }
-  
+
   /**
+   * Prosedur untuk memindahkan Animal dari satu cell ke cell lainnya.
    * I.S. myZoo dan hewan terdefinisi
    * F.S. hewan berhasil berpindah di dalam myZoo
-   * @param myZoo zoo yang aktif
-   * @param hewan hewan yang digerakkan
+   * @param myZoo atribut zoo untuk mengecek pergerakan hewan
+   * @param hewan atribut Animal yang akan digerakkan di dalam Zoo
    */
   public static void moveAnimal(Zoo myZoo, Animal hewan) {
     int randomNum = -1;
@@ -63,10 +64,7 @@ public class AnimalMover {
       randomNum = randomMove();
       valid = checkMove(myZoo, randomNum, animalLoc);
     }
-
-    System.out.println(randomNum);
     // Menaruh hewan ke dalam cell selanjutnya
-    //((Habitat)myZoo.getCell(new Point(currLoc.getX() - 1, currLoc.getY()))).addHewan(hewan);
     if (randomNum == 1) {
       ((Habitat) myZoo.getCell(new Point(currLoc.getX() - 1, currLoc.getY()))).addHewan(hewan);
       hewan.setLocation(new Point(currLoc.getX() - 1, currLoc.getY()));

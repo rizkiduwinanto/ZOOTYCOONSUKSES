@@ -1,5 +1,6 @@
 package mainview;
 
+import cell.habitat.Habitat;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -167,8 +168,7 @@ public class TourView extends JFrame {
    * Prosedur untuk mengisi tabel dengan Zoo.
    * I.S. table dan myZoo terdefinisi
    * F.S. table terisi dengan map tampilan dari myZoo beserta hewan-hewan
-   * @param table
-   * @param myZoo
+   * @param myZoo atribut Zoo yang digunakan untuk rendering
    */
   public void fillTable(Zoo myZoo) {
 		assert(myZoo.getKolom() == 25) : "Kolom dari matriks of cell pada zoo harus 25";
@@ -179,8 +179,16 @@ public class TourView extends JFrame {
 		for (int i = 0; i < myZoo.getBaris(); i++) {
 			for (int j = 0; j < myZoo.getKolom(); j++) {
 				Point p = new Point(j,i);
-				if (myZoo.getCell(p)!=null){
-					table.getModel().setValueAt(myZoo.getCell(p).render(),i,j);
+				if (myZoo.getCell(p) != null){
+          if (myZoo.getCell(p) instanceof Habitat) {
+            if ((((Habitat) myZoo.getCell(p)).getHewan()) != null) {
+              table.getModel().setValueAt(((Habitat)myZoo.getCell(p)).getHewan().render(), i, j);
+            } else {
+              table.getModel().setValueAt(myZoo.getCell(p).render(), i, j);
+            }
+          } else {
+            table.getModel().setValueAt(myZoo.getCell(p).render(), i, j);
+          }
 				}
 				
 			}

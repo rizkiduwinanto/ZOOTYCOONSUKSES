@@ -1,5 +1,6 @@
 package mainview;
 
+import cell.habitat.Habitat;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -172,25 +173,32 @@ public class BuildModeView extends JFrame {
 
 	/**
 	 * Mengisi tabel dengan zoo
-	 * @param table
-	 * @param myZoo
+	 * @param myZoo atribut zoo yang digunakan untuk melakukan rendering
 	 */
 	public void fillTable(Zoo myZoo) {
 		assert(myZoo.getKolom() == 25) : "Kolom dari matriks of cell pada zoo harus 25";
 		assert(myZoo.getBaris() == 25) : "Baris dari matrisk of cell pada zoo harus 25";
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
-		
+
 		for (int i = 0; i < myZoo.getBaris(); i++) {
 			for (int j = 0; j < myZoo.getKolom(); j++) {
 				Point p = new Point(j,i);
-				if (myZoo.getCell(p)!=null){
-					table.getModel().setValueAt(myZoo.getCell(p).render(),i,j);
+				if (myZoo.getCell(p) != null){
+					if (myZoo.getCell(p) instanceof Habitat) {
+						if ((((Habitat) myZoo.getCell(p)).getHewan()) != null) {
+							table.getModel().setValueAt(((Habitat)myZoo.getCell(p)).getHewan().render(), i, j);
+						} else {
+							table.getModel().setValueAt(myZoo.getCell(p).render(), i, j);
+						}
+					} else {
+						table.getModel().setValueAt(myZoo.getCell(p).render(), i, j);
+					}
 				}
-				
+
 			}
 		}
-		
+
 		for (int j = 0; j < myZoo.getKolom(); j++) {
 			table.getColumnModel().getColumn(j).setCellRenderer( centerRenderer );
 		}

@@ -15,10 +15,17 @@ import zoo.Zoo;
  */
 public class Saver {
 
-  private Saver(){
+  /**
+   * Konstruktor Saver.
+   */
+  public Saver() {}
 
-  }
-
+  /**
+   * Prosedur untuk melakukan penyimpanan Zoo ke dalam file eksternal.
+   * I.S. myZoo terdefinisi
+   * F.S. data cell yang berada di dalam myZoo berhasil disimpan di dalam file eksternal
+   * @param myZoo Zoo yang akan disimpan ke dalam file eksternal
+   */
   public static void saveZoo(Zoo myZoo)  {
     String path = System.getProperty("user.dir") + "/savedprofile";
 
@@ -47,11 +54,8 @@ public class Saver {
       } catch (UnsupportedEncodingException e) {
         e.printStackTrace();
       }
-
-
       //Membuat animal.txt
       /* UNIMPLEMENTED */
-
       System.out.println("Profile " + profilename + " berhasil dibuat.");
     } else {
       System.out.println("Terdapat kesalahan. (disebabkan profile sudah ada"

@@ -42,9 +42,22 @@ public abstract class Habitat extends Cell {
   }
 
   /**
-   * Setter Animal.
+   * Setter Animal
+   * @param hewan Atribut Animal yang ditambahkan
    */
   public void addHewan(Animal hewan) {
-    this.hewan = hewan;
+    if (hewan != null) {
+      if (hewan.isLandAnimal() && isLandHabitat()) {
+        this.hewan = hewan;
+      } else if (hewan.isWaterAnimal() && isWaterHabitat()) {
+        this.hewan = hewan;
+      } else if (hewan.isFlyAnimal() && isAirHabitat()) {
+        this.hewan = hewan;
+      } else {
+        this.hewan = null;
+      }
+    } else {
+      this.hewan = null;
+    }
   }
 }

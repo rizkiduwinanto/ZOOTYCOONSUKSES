@@ -1,5 +1,12 @@
 package maincontroller;
 
+import static java.lang.Thread.State.RUNNABLE;
+
+import animal.Animal;
+import animal.amphibi.kodok.Kodok;
+import animal.landanimal.badakjawa.BadakJawa;
+import animal.landanimal.singa.Singa;
+import animal.wateranimal.pauspembunuh.PausPembunuh;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,6 +21,7 @@ import mainview.MenuView;
 import mainview.NewGameView;
 import mainview.ProfileView;
 import mainview.TourView;
+import mover.MapThread;
 import point.Point;
 import profile.Profile;
 
@@ -26,6 +34,8 @@ public class MainController {
 	private BuildModeView buildModeView = new BuildModeView();
 	private BuildModeModel buildModeModel =  new BuildModeModel();
 	private LoadFileView loadFileView = new LoadFileView();
+	private MapThread mapThread;
+
 	/**
 	 * Constructor Main Controller.
 	 */
@@ -58,8 +68,18 @@ public class MainController {
 					loadFileView.setVisible(false);
 					ProfileModel.setProfileName(String.valueOf(loadFileView.getComboBox().getSelectedItem()));
 					buildModeModel = new BuildModeModel();
+					//penambahan hewan
+          Animal hewan = new Singa(3, 3, 90, true);
+          buildModeModel.addAnimal(hewan);
+          hewan = new Kodok(5, 5, 10, false);
+          buildModeModel.addAnimal(hewan);
+          hewan = new BadakJawa(5, 11, 200, true);
+          buildModeModel.addAnimal(hewan);
+          //hewan = new PausPembunuh(5, 12, 200, true);
+          //buildModeModel.addAnimal(hewan);
 					buildModeView.fillTable( buildModeModel.getMyZoo());
-					Profile p= Loader.loadProfile(profileModel.getProfileName());
+          mapThread = new MapThread(buildModeModel, tourView);
+					Profile p = Loader.loadProfile(profileModel.getProfileName());
 					profileModel.setProfileLoad(p.getNamaPemilik(), p.getUang(), p.getNamaZoo(), p.getJumlahAnimal(), p.getAchievement());
 					profileView.setPemilik(profileModel.getProfile().getNamaPemilik());
 					profileView.setUang(profileModel.getProfile().getUang());
@@ -92,7 +112,6 @@ public class MainController {
 		  public void actionPerformed(ActionEvent m) {
 				if (m.getSource() == menuView.getBtnNewGame()){
 					menuView.setVisible(false);
-					
 					newGameView.setVisible(true);
 				} else if (m.getSource() == menuView.getBtnLoad()){
 					menuView.setVisible(false);
@@ -115,13 +134,13 @@ public class MainController {
 			 */
 		  @Override
 		  public void actionPerformed(ActionEvent m) {
-				if (m.getSource()==profileView.getMenuBuild()){
+				if (m.getSource() == profileView.getMenuBuild()){
 					profileView.setVisible(false);
 					buildModeView.setVisible(true);
-				} else if (m.getSource()==profileView.getMenuTourView()){
+				} else if (m.getSource() == profileView.getMenuTourView()){
 					profileView.setVisible(false);
 					tourView.setVisible(true);
-				} else if (m.getSource()==profileView.getMenuMain()){
+				} else if (m.getSource() == profileView.getMenuMain()){
 					profileView.setVisible(false);
 					menuView.setVisible(true);
 				}
@@ -144,6 +163,8 @@ public class MainController {
 		  public void actionPerformed(ActionEvent m) {
 				if (m.getSource() == tourView.getMenu2()) {
 					tourView.setVisible(false);
+					//buildModeModel.stopThread();
+          //mapThread.kill();
 					buildModeView.setVisible(true);
 				} else if (m.getSource() == tourView.getMenu3()) {
 					tourView.setVisible(false);
@@ -176,17 +197,13 @@ public class MainController {
 				  profileModel.setProfile(profilePemilik, namaZoo);
 				  newGameView.setVisible(false);
 				  profileModel.setProfile(newGameView.getPemilikField().getText() ,newGameView.getNamaZooField().getText() );
-				  
 				  profileView.setPemilik(profileModel.getProfile().getNamaPemilik());
 				  profileView.setZoo(profileModel.getProfile().getNamaZoo());
 				  profileView.setUang(profileModel.getProfile().getUang());
 				  profileView.setAnimal(profileModel.getProfile().getJumlahAnimal());
 				  profileView.setList(profileModel.getProfile().getAchievement());
-				  
 				  buildModeView.fillTable( buildModeModel.getMyZoo());
-				  
 				  buildModeView.setVisible(true);
-				  
 			  } else if (m.getSource() == newGameView.getBtnCancel()){
 				  
 			  } 
@@ -249,9 +266,15 @@ public class MainController {
 				    	}
 						
 				      } else if (e.getSource() == buildModeView.getMntmNewMenuItem()) {
-				    	buildModeView.setVisible(false);
-				    	tourView.fillTable(buildModeModel.getMyZoo());
-				    	tourView.setVisible(true);
+							buildModeView.setVisible(false);
+							tourView.fillTable(buildModeModel.getMyZoo());
+				    	if (!mapThread.isAlive()) {
+                tourView.fillTable(buildModeModel.getMyZoo());
+                mapThread.start();
+                System.out.println(mapThread.getState());
+              }
+				    	buildModeModel.startThread();
+								tourView.setVisible(true);
 				      } else if (e.getSource() == buildModeView.getMntmProfile()) {
 				        buildModeView.setVisible(false);
 				        profileView.setVisible(true);
