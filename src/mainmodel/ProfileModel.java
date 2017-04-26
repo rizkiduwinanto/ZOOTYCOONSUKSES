@@ -16,12 +16,13 @@ public class ProfileModel {
 		int jumlahAnimal = 0;
 		ArrayList<String> arrayList = new ArrayList<>();
 		arrayList.add("Rookie");
-		arrayList.add("Jito");
-		arrayList.add("cibur");
-		arrayList.add("ambyar");
+		arrayList.add("Newbie");
 		profile = new Profile(namaPemilik, uang, namaZoo, jumlahAnimal, arrayList); 
 	}
 	
+	public void setProfileLoad(String namaPemilik,long uang, String namaZoo,int nbanimal,ArrayList<String> achievement) {
+		profile = new Profile(namaPemilik,uang,namaZoo,nbanimal,achievement);
+	}
 	public Profile getProfile(){
 		return profile;
 	}

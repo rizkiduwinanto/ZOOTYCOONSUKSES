@@ -175,7 +175,7 @@ public class BuildModeView extends JFrame {
 	 * @param table
 	 * @param myZoo
 	 */
-	public void fillTable(JTable table,Zoo myZoo) {
+	public void fillTable(Zoo myZoo) {
 		assert(myZoo.getKolom() == 25) : "Kolom dari matriks of cell pada zoo harus 25";
 		assert(myZoo.getBaris() == 25) : "Baris dari matrisk of cell pada zoo harus 25";
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();

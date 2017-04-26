@@ -3,6 +3,7 @@ package mainview;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
@@ -16,7 +17,9 @@ import java.awt.Component;
 import javax.swing.JTextPane;
 import java.awt.Dimension;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.JMenuBar;
@@ -70,7 +73,33 @@ public class TourView extends JFrame {
     setContentPane(contentPane);
     contentPane.setLayout(null);
     
-    table = new JTable();
+    table = new JTable() {
+		@Override
+	    public Component prepareRenderer(TableCellRenderer renderer, int row, int col) {
+	        Component comp = super.prepareRenderer(renderer, row, col);
+	        Object value = getModel().getValueAt(row, col);
+	        if (value!=null){
+	        	if (value.equals('w')){
+	        		comp.setBackground(Color.blue);
+	        	} else if (value.equals('a')) {
+	        		comp.setBackground(Color.cyan);
+	        	} else if (value.equals('x')) {
+	        		comp.setBackground(Color.green);
+	        	} else if (value.equals('R')){
+	        		comp.setBackground(Color.magenta);
+	        	} else if (value.equals('.')) {
+	        		comp.setBackground(Color.gray);
+	        	} else if (value.equals('#')) {
+	        		comp.setBackground(Color.ORANGE);
+	        	} else {
+	        		comp.setBackground(Color.white);
+	        	}
+	        } else {
+	        	comp.setBackground(Color.white);
+	        }
+	        return comp;
+	    }
+	};
     table.setBorder(new LineBorder(new Color(0, 0, 0)));
     table.setBounds(0, 29, 500, 500);
     table.setRowHeight(20);
@@ -141,16 +170,27 @@ public class TourView extends JFrame {
    * @param table
    * @param myZoo
    */
-  public void fillTable(JTable table, Zoo myZoo) {
-    assert(myZoo.getKolom() == 25) : "Kolom dari matriks of cell pada zoo harus 25";
-    assert(myZoo.getBaris() == 25) : "Baris dari matrisk of cell pada zoo harus 25";
-    for (int i = 0; i < myZoo.getBaris(); i++) {
-      for (int j = 0; j < myZoo.getKolom(); j++) {
-        table.getModel().setValueAt(myZoo.getCell(new Point(j,i)).render(),j,i);
-      }
-    }
-  }
-  
+  public void fillTable(Zoo myZoo) {
+		assert(myZoo.getKolom() == 25) : "Kolom dari matriks of cell pada zoo harus 25";
+		assert(myZoo.getBaris() == 25) : "Baris dari matrisk of cell pada zoo harus 25";
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+		
+		for (int i = 0; i < myZoo.getBaris(); i++) {
+			for (int j = 0; j < myZoo.getKolom(); j++) {
+				Point p = new Point(j,i);
+				if (myZoo.getCell(p)!=null){
+					table.getModel().setValueAt(myZoo.getCell(p).render(),i,j);
+				}
+				
+			}
+		}
+		
+		for (int j = 0; j < myZoo.getKolom(); j++) {
+			table.getColumnModel().getColumn(j).setCellRenderer( centerRenderer );
+		}
+	}
+
   /**
    * Getter Menu Build Mode.
    * @return mntmNewMenuItem

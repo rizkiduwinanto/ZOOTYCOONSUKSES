@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import loader.Loader;
 import mainmodel.BuildModeModel;
 import mainmodel.ProfileModel;
 import mainview.BuildModeView;
@@ -14,6 +15,7 @@ import mainview.NewGameView;
 import mainview.ProfileView;
 import mainview.TourView;
 import point.Point;
+import profile.Profile;
 
 public class MainController {
 	private TourView tourView = new TourView();
@@ -55,7 +57,15 @@ public class MainController {
 				if (m.getSource() == loadFileView.getBtnOk()) {
 					loadFileView.setVisible(false);
 					ProfileModel.setProfileName(String.valueOf(loadFileView.getComboBox().getSelectedItem()));
-					buildModeView.fillTable( buildModeView.getTable(), buildModeModel.getMyZoo());
+					buildModeModel = new BuildModeModel();
+					buildModeView.fillTable( buildModeModel.getMyZoo());
+					Profile p= Loader.loadProfile(profileModel.getProfileName());
+					profileModel.setProfileLoad(p.getNamaPemilik(), p.getUang(), p.getNamaZoo(), p.getJumlahAnimal(), p.getAchievement());
+					profileView.setPemilik(profileModel.getProfile().getNamaPemilik());
+					profileView.setUang(profileModel.getProfile().getUang());
+					profileView.setZoo(profileModel.getProfile().getNamaZoo());
+					profileView.setAnimal(profileModel.getProfile().getJumlahAnimal());
+					profileView.setList(profileModel.getProfile().getAchievement());
 					buildModeView.setVisible(true);
 				}
 			}
@@ -173,7 +183,7 @@ public class MainController {
 				  profileView.setAnimal(profileModel.getProfile().getJumlahAnimal());
 				  profileView.setList(profileModel.getProfile().getAchievement());
 				  
-				  buildModeView.fillTable( buildModeView.getTable(), buildModeModel.getMyZoo());
+				  buildModeView.fillTable( buildModeModel.getMyZoo());
 				  
 				  buildModeView.setVisible(true);
 				  
@@ -235,11 +245,12 @@ public class MainController {
 				    			readed = 'x';
 				    		}
 				    		buildModeModel.getMyZoo().setCellType(new Point(posx,posy), readed);
-				    		buildModeView.fillTable(buildModeView.getTable(),buildModeModel.getMyZoo());
+				    		buildModeView.fillTable(buildModeModel.getMyZoo());
 				    	}
 						
 				      } else if (e.getSource() == buildModeView.getMntmNewMenuItem()) {
 				    	buildModeView.setVisible(false);
+				    	tourView.fillTable(buildModeModel.getMyZoo());
 				    	tourView.setVisible(true);
 				      } else if (e.getSource() == buildModeView.getMntmProfile()) {
 				        buildModeView.setVisible(false);
