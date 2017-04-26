@@ -1,8 +1,10 @@
 package animal.flyanimal.bangau;
 
-import point.Point;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
+import point.Point;
+
 
 /**
  * Created by hishaml on 4/14/17.

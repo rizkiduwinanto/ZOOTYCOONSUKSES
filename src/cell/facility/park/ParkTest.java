@@ -1,6 +1,7 @@
 package cell.facility.park;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import point.Point;
 

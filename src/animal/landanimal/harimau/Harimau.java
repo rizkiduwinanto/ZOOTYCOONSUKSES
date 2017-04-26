@@ -1,7 +1,8 @@
 package animal.landanimal.harimau;
 
-import point.Point;
 import animal.landanimal.LandAnimal;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -28,12 +29,12 @@ public class Harimau extends LandAnimal {
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
   public String interact() {
-    return("Harimau : Grrrrr");
+    return ("Harimau : Grrrrr");
   }
 
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('H');
+    return ('H');
   }
 }

@@ -1,7 +1,8 @@
 package animal.flyanimal.kasuari;
 
-import point.Point;
 import animal.flyanimal.FlyAnimal;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -28,12 +29,12 @@ public class Kasuari extends FlyAnimal {
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
   public String interact() {
-    return("Kasuari : Hwok hwok whok whok whok");
+    return ("Kasuari : Hwok hwok whok whok whok");
   }
 
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('R');
+    return ('R');
   }
 }

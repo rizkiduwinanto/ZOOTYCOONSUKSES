@@ -1,7 +1,8 @@
 package animal.landanimal.simpanse;
 
-import point.Point;
 import animal.landanimal.LandAnimal;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -34,6 +35,6 @@ public class Simpanse extends LandAnimal {
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('P');
+    return ('P');
   }
 }

@@ -1,9 +1,10 @@
 package cell.habitat.airhabitat;
 
+import static org.junit.Assert.assertEquals;
+
 import animal.Animal;
 import animal.flyanimal.bangau.Bangau;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import point.Point;
 
 /**

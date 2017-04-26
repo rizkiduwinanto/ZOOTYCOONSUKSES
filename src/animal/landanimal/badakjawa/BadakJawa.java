@@ -1,7 +1,8 @@
 package animal.landanimal.badakjawa;
 
-import point.Point;
 import animal.landanimal.LandAnimal;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -27,11 +28,13 @@ public class BadakJawa extends LandAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public String interact() { return ("BadakJawa : *Awas Diseruduk*");}
+  public String interact() {
+    return ("BadakJawa : *Awas Diseruduk*");
+  }
 
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('D');
+    return ('D');
   }
 }

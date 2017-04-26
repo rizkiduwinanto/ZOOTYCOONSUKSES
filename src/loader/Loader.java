@@ -14,11 +14,18 @@ import zoo.Zoo;
  * Created by AZIS ADI KUNCORO (13515120) on 22/04/2017.
  */
 public class Loader {
-
+  /**
+   * Konstruktor default.
+   */
   private Loader(){
 
   }
-
+  
+  /**
+   * Loader untuk meload zoo.
+   * @param profilename nama profile.
+   * @return Zoo yg telah di load.
+   */
   public static Zoo loadZoo(String profilename) {
     Zoo myZoo = new Zoo(1,1);
 
@@ -60,54 +67,59 @@ public class Loader {
 
    
     
-  //Melakukan load terhadap animal
+    //Melakukan load terhadap animal
     /* UNIMPLEMENTED */
     System.out.println("Profile " + profilename + " successfully loaded !");
     
     return myZoo;
   }
   
+  
+  /**
+   * Loader untuk meload profile.
+   * @param profilename nama profile.
+   * @return Profile yg telah di load.
+   */
   public static Profile loadProfile(String profilename) {
-	  Zoo myZoo = new Zoo(1,1);
+    Zoo myZoo = new Zoo(1,1);
 
-	    String path = System.getProperty("user.dir") + "/savedprofile";
+    String path = System.getProperty("user.dir") + "/savedprofile";
+    
+    File folder = new File(path);
+    File[] listOfFiles = folder.listFiles();
 
-	    File folder = new File(path);
-	    File[] listOfFiles = folder.listFiles();
-	    
-	    Scanner sc;
+    Scanner sc;
 
-	    //Check apakah profilename yg akan di load ada di direktori apa tidak
-	    boolean found = false;
-	    for (int i = 0; i < listOfFiles.length && !found; i++) {
-	      found = listOfFiles[i].getName().equals(profilename);
-	    }
-	    assert (found) : "Maaf profile tidak ditemukan";
+    //Check apakah profilename yg akan di load ada di direktori apa tidak
+    boolean found = false;
+    for (int i = 0; i < listOfFiles.length && !found; i++) {
+      found = listOfFiles[i].getName().equals(profilename);
+    }
+    assert (found) : "Maaf profile tidak ditemukan";
 
-	    String profilepath = path + "/" + profilename;
-	    StringBuffer readed;
-	    
-	   //Load terhadap profile
-	    String prof_path = profilepath + "/" + "profile.txt";
-	    String namaPemilik = "";
-	    long uang = 0;
-	    String namaZoo = "";
-	    int nbanimal = 0;
-	    ArrayList<String> achievement = new ArrayList<>();
-	    try {
-	        sc = new Scanner(new File(prof_path));
-	        namaPemilik = sc.nextLine();
-	        uang = Integer.parseInt(sc.nextLine());
-	        namaZoo = sc.nextLine();
-	        nbanimal = Integer.parseInt(sc.nextLine());
-	        while (sc.hasNextLine()){
-	        	achievement.add(sc.nextLine());
-	        }
-	      } catch (FileNotFoundException e) {
-	        e.printStackTrace();
-	     }
-	    Profile myProf = new Profile(namaPemilik,uang,namaZoo,nbanimal,achievement);
-	    
-	    return myProf;
+    String profilepath = path + "/" + profilename;
+    StringBuffer readed;
+
+    //Load terhadap profile
+    String profpath = profilepath + "/" + "profile.txt";
+    String namaPemilik = "";
+    long uang = 0;
+    String namaZoo = "";
+    int nbanimal = 0;
+    ArrayList<String> achievement = new ArrayList<>();
+    try {
+      sc = new Scanner(new File(profpath));
+      namaPemilik = sc.nextLine();
+      uang = Integer.parseInt(sc.nextLine());
+      namaZoo = sc.nextLine();
+      nbanimal = Integer.parseInt(sc.nextLine());
+      while (sc.hasNextLine()) {
+        achievement.add(sc.nextLine());
+      }
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }
+    Profile myProf = new Profile(namaPemilik,uang,namaZoo,nbanimal,achievement);
+    return myProf;
   }
 }

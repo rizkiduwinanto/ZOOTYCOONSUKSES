@@ -1,63 +1,65 @@
 package animal.landanimal.harimau;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
+
 
 /**
  * Created by Hishamlazuardi on 22/04/2017.
  */
 public class HarimauTest {
-  private Harimau l = new Harimau(9, 5, 70, true);
+  private Harimau ll = new Harimau(9, 5, 70, true);
 
   @Test
   public void testInteract() throws Exception {
-    l.interact();
+    ll.interact();
   }
 
   @Test
   public void testGetLocation() throws Exception {
-    assertEquals(9, l.getLocation().getX());
-    assertEquals(5, l.getLocation().getY());
+    assertEquals(9, ll.getLocation().getX());
+    assertEquals(5, ll.getLocation().getY());
   }
 
   @Test
   public void testGetBeratBadan() throws Exception {
-    assertEquals(70, l.getBeratBadan(), 0);
+    assertEquals(70, ll.getBeratBadan(), 0);
   }
 
   @Test
   public void testIsBuas() throws Exception {
-    assertEquals(true, l.isBuas());
+    assertEquals(true, ll.isBuas());
   }
 
   @Test
   public void testGetPorsiMakanan() throws Exception {
-    assertEquals((0.05 * 70), l.getPorsiMakanan(), 0.05);
+    assertEquals((0.05 * 70), ll.getPorsiMakanan(), 0.05);
   }
 
   @Test
   public void testIsLandAnimal() throws Exception {
-    assertEquals(true, l.isLandAnimal());
+    assertEquals(true, ll.isLandAnimal());
   }
 
   @Test
   public void testIsWaterAnimal() throws Exception {
-    assertEquals(false, l.isWaterAnimal());
+    assertEquals(false, ll.isWaterAnimal());
   }
 
   @Test
   public void testIsFlyAnimal() throws Exception {
-    assertEquals(false, l.isFlyAnimal());
+    assertEquals(false, ll.isFlyAnimal());
   }
 
   @Test
   public void testIsHerbivor() throws Exception {
-    assertEquals(false, l.isHerbivor());
+    assertEquals(false, ll.isHerbivor());
   }
 
   @Test
   public void testIsKarnivor() throws Exception {
-    assertEquals(true, l.isKarnivor());
+    assertEquals(true, ll.isKarnivor());
   }
 
 }

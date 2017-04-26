@@ -3,6 +3,8 @@ package cell.facility;
 import cell.Cell;
 import point.Point;
 
+
+
 /** Kelas Facility bertanggung jawab mengelola Facility.
  * @author AZIS ADI KUNCORO (13515120)
  * @version 3.0

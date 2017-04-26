@@ -1,7 +1,7 @@
 package cell.habitat;
 
-import cell.Cell;
 import animal.Animal;
+import cell.Cell;
 import point.Point;
 
 /** Kelas Habitat bertanggung jawab mengelola habitat.
@@ -42,7 +42,7 @@ public abstract class Habitat extends Cell {
   }
 
   /**
-   * Setter Animal
+   * Setter Animal.
    */
   public void addHewan(Animal hewan) {
     this.hewan = hewan;

@@ -1,7 +1,8 @@
 package animal.landanimal.beruangmadu;
 
-import point.Point;
 import animal.landanimal.LandAnimal;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -28,12 +29,12 @@ public class BeruangMadu extends LandAnimal {
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
   public String interact() {
-    return("Beruang Madu : Growl");
+    return ("Beruang Madu : Growl");
   }
 
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('U');
+    return ('U');
   }
 }

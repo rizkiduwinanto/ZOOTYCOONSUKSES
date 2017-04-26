@@ -1,7 +1,7 @@
 package animal.wateranimal.hiuputihbesar;
 
-import point.Point;
 import animal.wateranimal.WaterAnimal;
+import point.Point;
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -34,6 +34,6 @@ public class HiuPutihBesar extends WaterAnimal {
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('G');
+    return ('G');
   }
 }

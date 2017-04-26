@@ -1,7 +1,8 @@
 package animal.flyanimal.kelelawarvampir;
 
-import point.Point;
 import animal.flyanimal.FlyAnimal;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -28,12 +29,12 @@ public class KelelawarVampir extends FlyAnimal {
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
   public String interact() {
-    return("Kelelawar Vampir : Wkaktktktktktkk Wkaattktktktk");
+    return ("Kelelawar Vampir : Wkaktktktktktkk Wkaattktktktk");
   }
 
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('V');
+    return ('V');
   }
 }

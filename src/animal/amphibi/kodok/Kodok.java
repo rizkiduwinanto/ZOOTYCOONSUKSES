@@ -1,7 +1,8 @@
 package animal.amphibi.kodok ;
 
-import point.Point;
 import animal.amphibi.Amphibi;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -29,12 +30,12 @@ public class Kodok extends Amphibi {
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
   public String interact() {
-    return("Kodok: Teot Teblung! Teot teblung! Teotteotteblung");
+    return ("Kodok: Teot Teblung! Teot teblung! Teotteotteblung");
   }
 
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('K');
+    return ('K');
   }
 }

@@ -1,8 +1,12 @@
 package animal.flyanimal.beo;
 
+import static org.junit.Assert.assertEquals;
+
 import junit.framework.TestCase;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
+
+
 
 /**
  * Created by hishaml on 4/14/17.

@@ -1,7 +1,8 @@
 package animal.landanimal.zebra;
 
-import point.Point;
 import animal.landanimal.LandAnimal;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -34,6 +35,6 @@ public class Zebra extends LandAnimal {
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('Z');
+    return ('Z');
   }
 }

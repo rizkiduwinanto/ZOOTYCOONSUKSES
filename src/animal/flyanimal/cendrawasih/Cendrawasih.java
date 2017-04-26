@@ -1,8 +1,8 @@
 package animal.flyanimal.cendrawasih;
 
-
-import point.Point;
 import animal.flyanimal.FlyAnimal;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -28,12 +28,13 @@ public class Cendrawasih extends FlyAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public String interact() { return("Cendrawasih : ciuwwwhiiiit whuitwhuitwhuit");
+  public String interact() { 
+    return ("Cendrawasih : ciuwwwhiiiit whuitwhuitwhuit"); 
   }
 
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('C');
+    return ('C');
   }
 }

@@ -1,7 +1,8 @@
 package cell;
 
-import renderable.Renderable;
 import point.Point;
+import renderable.Renderable;
+
 
 /** Kelas Cell bertanggung jawab atas kebutuhan-kebutuhan cell.
  * @author AZIS ADI KUNCORO (13515120)

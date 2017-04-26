@@ -1,7 +1,8 @@
 package animal.amphibi.pinguinemperor;
 
-import point.Point;
 import animal.amphibi.Amphibi;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf
@@ -29,12 +30,12 @@ public class PinguinEmperor extends Amphibi {
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
   public String interact() {
-    return("Pinguin Emperor : Krrr...Tot! Krrr....Tot!");
+    return ("Pinguin Emperor : Krrr...Tot! Krrr....Tot!");
   }
 
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('T');
+    return ('T');
   }
 }

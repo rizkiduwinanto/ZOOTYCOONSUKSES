@@ -1,7 +1,8 @@
 package animal.flyanimal.macaw;
 
-import point.Point;
 import animal.flyanimal.FlyAnimal;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -28,12 +29,12 @@ public class Macaw extends FlyAnimal {
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
   public String interact() {
-    return("Macaw : Raaaak.. Raaaak");
+    return ("Macaw : Raaaak.. Raaaak");
   }
 
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('W');
+    return ('W');
   }
 }

@@ -1,7 +1,8 @@
 package animal.flyanimal.bangau;
 
-import point.Point;
 import animal.flyanimal.FlyAnimal;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -28,12 +29,12 @@ public class Bangau extends FlyAnimal {
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
   public String interact() {
-    return("Bangau: Wkaktktktktktkk Wkaattktktktk");
+    return ("Bangau: Wkaktktktktktkk Wkaattktktktk");
   }
 
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('B');
+    return ('B');
   }
 }

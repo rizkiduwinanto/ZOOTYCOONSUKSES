@@ -1,7 +1,8 @@
 package animal.wateranimal.sapilaut;
 
-import point.Point;
 import animal.wateranimal.WaterAnimal;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -34,6 +35,6 @@ public class SapiLaut extends WaterAnimal {
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('I');
+    return ('I');
   }
 }

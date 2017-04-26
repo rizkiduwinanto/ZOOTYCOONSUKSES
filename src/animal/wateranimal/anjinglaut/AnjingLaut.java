@@ -1,7 +1,8 @@
 package animal.wateranimal.anjinglaut;
 
-import point.Point;
 import animal.wateranimal.WaterAnimal;
+import point.Point;
+
 
 /**
  * @author Hisham Lazuardi Yusuf (13515069)
@@ -27,12 +28,13 @@ public class AnjingLaut extends WaterAnimal {
   /** I.S Current objek terdefinisi
    *  F.S Menampilkan interaksi hewan dengan pengunjung
    */
-  public String interact() { return ("Anjing Laut : Auuhg...Auuuhg ");
+  public String interact() {
+    return ("Anjing Laut : Auuhg...Auuuhg ");
   }
 
   /** Fungsi untuk melakukan render di dalam GUI.
    */
   public char render() {
-    return('L');
+    return ('L');
   }
 }

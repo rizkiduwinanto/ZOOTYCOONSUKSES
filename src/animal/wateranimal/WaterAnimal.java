@@ -1,6 +1,5 @@
 package animal.wateranimal;
 
-
 import animal.Animal;
 
 /**
