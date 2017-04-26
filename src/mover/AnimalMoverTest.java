@@ -4,6 +4,8 @@ import animal.Animal;
 import animal.amphibi.kodok.Kodok;
 import cell.habitat.Habitat;
 import loader.Loader;
+import mainmodel.ProfileModel;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 import zoo.Zoo;
@@ -13,7 +15,7 @@ import point.Point;
  * Created by Hishamlazuardi on 25/04/2017.
  */
 public class AnimalMoverTest {
-  private Zoo myZoo = Loader.loadZoo();
+  private Zoo myZoo = Loader.loadZoo(ProfileModel.getProfileName());
   private Animal hewan = new Kodok(3, 5, 15, false);
 
   @Test

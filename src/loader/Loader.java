@@ -17,24 +17,15 @@ public class Loader {
 
   }
 
-  public static Zoo loadZoo() {
+  public static Zoo loadZoo(String profilename) {
     Zoo myZoo = new Zoo(1,1);
 
     String path = System.getProperty("user.dir") + "/savedprofile";
 
     File folder = new File(path);
     File[] listOfFiles = folder.listFiles();
-
-    System.out.println("List of saved profiles :");
-    for (int i = 0; i < listOfFiles.length; i++) {
-      System.out.println((i + 1) + ") " + listOfFiles[i].getName());
-
-    }
-
+    
     Scanner sc;
-    System.out.print("Masukkan nama profile yang akan diload : ");
-    sc = new Scanner(System.in);
-    String profilename = sc.nextLine();
 
     //Check apakah profilename yg akan di load ada di direktori apa tidak
     boolean found = false;

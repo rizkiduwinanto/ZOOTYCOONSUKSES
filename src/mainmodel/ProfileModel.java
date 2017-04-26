@@ -6,7 +6,7 @@ import profile.Profile;
 
 public class ProfileModel {
 	private Profile profile;
-	
+	private static String profileName;
 	public ProfileModel(){
 		profile = null;
 	}
@@ -24,5 +24,13 @@ public class ProfileModel {
 	
 	public Profile getProfile(){
 		return profile;
+	}
+	
+	public static String getProfileName(){
+		return profileName;
+	}
+	
+	public static void setProfileName(String profilename) {
+		profileName = profilename;
 	}
 }

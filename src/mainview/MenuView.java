@@ -18,7 +18,6 @@ import javax.swing.JButton;
 public class MenuView extends JFrame {
 
 	private JPanel contentPane;
-	private JMenuItem mntmExit;
 	private JButton btnNewGame;
 	private JButton btnLoad;
 	private JButton btnExit;
@@ -46,15 +45,6 @@ public class MenuView extends JFrame {
 		super("Main Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
-		JMenu mnMenu = new JMenu("Menu");
-		menuBar.add(mnMenu);
-		
-		mntmExit = new JMenuItem("Exit");
-		mnMenu.add(mntmExit);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.GREEN);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -62,7 +52,7 @@ public class MenuView extends JFrame {
 		contentPane.setLayout(null);
 		
 		btnNewGame = new JButton("New Game");
-		btnNewGame.setBounds(44, 178, 89, 23);
+		btnNewGame.setBounds(34, 178, 99, 23);
 		contentPane.add(btnNewGame);
 		
 		btnLoad = new JButton("Load");
@@ -93,13 +83,9 @@ public class MenuView extends JFrame {
 	public JButton getBtnExit(){
 		return btnExit;
 	}
-	public JMenuItem getmntmExit(){
-		return mntmExit;
-	}
 	public void addAllListener(ActionListener listen){
 		btnLoad.addActionListener(listen);
 		btnNewGame.addActionListener(listen);
 		btnExit.addActionListener(listen);
-		mntmExit.addActionListener(listen);
 	}
 }

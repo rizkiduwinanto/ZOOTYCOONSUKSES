@@ -183,7 +183,11 @@ public class BuildModeView extends JFrame {
 		
 		for (int i = 0; i < myZoo.getBaris(); i++) {
 			for (int j = 0; j < myZoo.getKolom(); j++) {
-				table.getModel().setValueAt(myZoo.getCell(new Point(j,i)).render(),i,j);
+				Point p = new Point(j,i);
+				if (myZoo.getCell(p)!=null){
+					table.getModel().setValueAt(myZoo.getCell(p).render(),i,j);
+				}
+				
 			}
 		}
 		

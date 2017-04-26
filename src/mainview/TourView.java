@@ -33,7 +33,6 @@ public class TourView extends JFrame {
 
   private JPanel contentPane;
   private JTable table;
-  private JMenuItem mntmNewMenuItem;
   private JMenuItem mntmNewMenuItem_2;
   private JMenuItem mntmNewMenuItem_3;
   private JMenuItem mntmNewMenuItem_4;
@@ -125,9 +124,6 @@ public class TourView extends JFrame {
     mnNewMenu.setForeground(Color.BLACK);
     menuBar.add(mnNewMenu);
     
-    mntmNewMenuItem = new JMenuItem("Build Mode");
-    mnNewMenu.add(mntmNewMenuItem);
-    
     mntmNewMenuItem_2 = new JMenuItem("View Zoo");
     mnNewMenu.add(mntmNewMenuItem_2);
     
@@ -159,9 +155,6 @@ public class TourView extends JFrame {
    * Getter Menu Build Mode.
    * @return mntmNewMenuItem
    */
-  public JMenuItem getMenu1() {
-	  return mntmNewMenuItem;
-  }
   
   /**
    * Getter Menu View Zoo.
@@ -199,7 +192,6 @@ public class TourView extends JFrame {
    * @param listen sebuah ActionListener untuk button atau menu
    */
   public void addAllListener(ActionListener listen) {
-	  mntmNewMenuItem.addActionListener(listen);
 	  mntmNewMenuItem_2.addActionListener(listen);
 	  mntmNewMenuItem_3.addActionListener(listen);
 	  mntmNewMenuItem_4.addActionListener(listen);

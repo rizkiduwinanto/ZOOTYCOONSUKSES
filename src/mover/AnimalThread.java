@@ -6,6 +6,7 @@ import animal.landanimal.badakjawa.BadakJawa;
 import animal.landanimal.singa.Singa;
 import cell.habitat.Habitat;
 import loader.Loader;
+import mainmodel.ProfileModel;
 import point.Point;
 import zoo.Zoo;
 
@@ -52,7 +53,7 @@ public class AnimalThread extends Thread {
     Animal hewan1 = new Kodok(2, 2, 15, false);
     Animal hewan2 = new BadakJawa(1, 1, 150, false);
     Animal hewan3 = new Singa(9, 1, 100, true);
-    Zoo myZoo = Loader.loadZoo();
+    Zoo myZoo = Loader.loadZoo(ProfileModel.getProfileName());
     AnimalThread T1 = new AnimalThread("T1", myZoo, hewan1);
     AnimalThread T2 = new AnimalThread("T2", myZoo, hewan2);
     //AnimalThread T3 = new AnimalThread("T3", myZoo, hewan3);

@@ -6,57 +6,61 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import mainmodel.BuildModeModel;
-import mainmodel.MenuModel;
 import mainmodel.ProfileModel;
-import mainmodel.TourModel;
-import mainmodel.VZooModel;
 import mainview.BuildModeView;
+import mainview.LoadFileView;
 import mainview.MenuView;
 import mainview.NewGameView;
 import mainview.ProfileView;
 import mainview.TourView;
-import mainview.VZooView;
 import point.Point;
 
 public class MainController {
-	Object view;
-	Object model;
 	private TourView tourView = new TourView();
-	private TourModel tourModel = new TourModel();
-	private VZooView vZooView = new VZooView();
-	private VZooModel vZooModel = new VZooModel();
 	private ProfileView profileView = new ProfileView();
 	private ProfileModel profileModel = new ProfileModel();
 	private MenuView menuView = new MenuView();
-	private MenuModel menuModel = new MenuModel();
 	private NewGameView newGameView = new NewGameView();
 	private BuildModeView buildModeView = new BuildModeView();
-	private BuildModeModel buildModeModel = new BuildModeModel();
+	private BuildModeModel buildModeModel =  new BuildModeModel();
+	private LoadFileView loadFileView = new LoadFileView();
 	/**
 	 * Constructor Main Controller.
 	 */
 	public MainController() {
-		view = menuView;
-		model = menuModel;  
-		((MenuView)view).setVisible(true);
+		menuView.setVisible(true);
 		init();
 	}
 	public void init() {
 		menuView.addAllListener(new MenuViewListener());
 		newGameView.addAllListener(new NewGameViewListener());
-		vZooView.addAllListener(new VZooViewListener());
+		loadFileView.addAllListener(new LoadFileViewListener());
 		profileView.addAllListener(new ProfileViewListener());
 		tourView.addAllListener(new TourViewListener());
 		buildModeView.addAllListener(new BuildModeListener());
 		
 		menuView.setLocationRelativeTo(null);
 		newGameView.setLocationRelativeTo(null);
-		vZooView.setLocationRelativeTo(null);
 		profileView.setLocationRelativeTo(null);
 		tourView.setLocationRelativeTo(null);
 		buildModeView.setLocationRelativeTo(null);
 	}
 		
+		private class LoadFileViewListener implements ActionListener{
+			private LoadFileViewListener() {
+				
+			}
+			
+			public void actionPerformed(ActionEvent m){
+				if (m.getSource() == loadFileView.getBtnOk()) {
+					loadFileView.setVisible(false);
+					ProfileModel.setProfileName(String.valueOf(loadFileView.getComboBox().getSelectedItem()));
+					buildModeView.fillTable( buildModeView.getTable(), buildModeModel.getMyZoo());
+					buildModeView.setVisible(true);
+				}
+			}
+		}
+	
 		/**
 		 * 
 		 * @author Muhammad Rizki Duwinanto
@@ -75,19 +79,14 @@ public class MainController {
 		   * @param m merupakan sebuah ActionEvent yang diterima
 		   */
 		  @Override
-			public void actionPerformed(ActionEvent m) {
-				if (m.getSource() == ((MenuView) view).getBtnNewGame()){
-					((MenuView)view).setVisible(false);
-					model = profileModel;
-					view = newGameView;
-					((NewGameView)view).setVisible(true);
-				} else if (m.getSource() == ((MenuView) view).getBtnLoad()){
+		  public void actionPerformed(ActionEvent m) {
+				if (m.getSource() == menuView.getBtnNewGame()){
+					menuView.setVisible(false);
 					
-				} else if (m.getSource() == ((MenuView)view).getBtnExit() || m.getSource() == ((MenuView) view).getmntmExit()){
-					int exitTrue = JOptionPane.showOptionDialog(menuView, "Serius Mau Keluar?", "Exit Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
-					if (exitTrue == JOptionPane.YES_OPTION){
-						System.exit(0);
-					}
+					newGameView.setVisible(true);
+				} else if (m.getSource() == menuView.getBtnLoad()){
+					menuView.setVisible(false);
+					loadFileView.setVisible(true);
 				}
 			}
 		}
@@ -105,22 +104,16 @@ public class MainController {
 			 * @param m merupakan sebuah ActionEvent yang diterima
 			 */
 		  @Override
-			public void actionPerformed(ActionEvent m) {
-				if (m.getSource()==((ProfileView)view).getMenuBuild()){
-					((ProfileView)view).setVisible(false);
-					model = buildModeView;
-					view = buildModeView;
+		  public void actionPerformed(ActionEvent m) {
+				if (m.getSource()==profileView.getMenuBuild()){
+					profileView.setVisible(false);
 					buildModeView.setVisible(true);
-				} else if (m.getSource()==((ProfileView)view).getMenuTourView()){
-					((ProfileView)view).setVisible(false);
-					model = tourModel;
-					view = tourView;
-					((TourView)view).setVisible(true);
-				} else if (m.getSource()==((ProfileView)view).getMenuMain()){
-					((ProfileView)view).setVisible(false);
-					model = menuModel;
-					view = menuView;
-					((MenuView)view).setVisible(true);
+				} else if (m.getSource()==profileView.getMenuTourView()){
+					profileView.setVisible(false);
+					tourView.setVisible(true);
+				} else if (m.getSource()==profileView.getMenuMain()){
+					profileView.setVisible(false);
+					menuView.setVisible(true);
 				}
 			}
 		}
@@ -138,62 +131,20 @@ public class MainController {
 			 * @param m merupakan sebuah ActionEvent yang diterima
 			 */
 		  @Override
-			public void actionPerformed(ActionEvent m) {
-				if (m.getSource() == ((TourView)view).getMenu1()) {
-					
-				} else if (m.getSource() == ((TourView)view).getMenu2()) {
-					((TourView)view).setVisible(false);
-					model = vZooModel;
-					view = vZooView;
-					((VZooView)view).setVisible(true);
-				} else if (m.getSource() == ((TourView)view).getMenu3()) {
-					((TourView)view).setVisible(false);
-					model = profileModel;
-					view = profileView;
-					((ProfileView)view).setVisible(true);
+		  public void actionPerformed(ActionEvent m) {
+				if (m.getSource() == tourView.getMenu2()) {
+					tourView.setVisible(false);
+					buildModeView.setVisible(true);
+				} else if (m.getSource() == tourView.getMenu3()) {
+					tourView.setVisible(false);
+					profileView.setVisible(true);
 				} else {
-					((TourView)view).setVisible(false);
-					model = menuModel;
-					view = menuView;
-					((MenuView)view).setVisible(true);
+					tourView.setVisible(false);
+					menuView.setVisible(true);
 				}
 			}
 		}
 		
-		private class VZooViewListener implements ActionListener {
-		    /**
-		     * Constructor.
-		     */
-		    private VZooViewListener() {
-		      
-		    }
-		    
-		    /**
-		     * Prosedur untuk menangkap action yang diterima oleh suatu menu.
-		     * @param m merupakan sebuah ActionEvent yang diterima
-		     */
-		    @Override
-		    public void actionPerformed(ActionEvent m) {
-		      if (m.getSource() == ((VZooView)view).getMenu1()) {
-		    	  
-		      } else if (m.getSource() == ((VZooView)view).getMenu2()) {
-		    	  ((VZooView)view).setVisible(false);
-		    	  model = tourModel;
-		    	  view = tourView;
-		    	  ((TourView)view).setVisible(true);
-		      } else if (m.getSource() == ((VZooView)view).getMenu3()) {
-		    	  ((VZooView)view).setVisible(false);
-		    	  model = profileModel;
-		    	  view = profileView;
-		    	  ((ProfileView)view).setVisible(true);
-		      } else {
-		    	  ((VZooView)view).setVisible(false);
-		    	  model = menuModel;
-		    	  view = menuView;
-		    	  ((MenuView)view).setVisible(true);
-		      }
-		    }
-		  }
 		
 		private class NewGameViewListener implements ActionListener {
 			/**
@@ -209,7 +160,7 @@ public class MainController {
 			 */
 		  @Override
 			public void actionPerformed(ActionEvent m) {
-			  if (m.getSource() == ((NewGameView)view).getBtnBuild()){
+			  if (m.getSource() == newGameView.getBtnBuild()){
 				  String profilePemilik = newGameView.getPemilikField().getText();
 				  String namaZoo = newGameView.getNamaZooField().getText();
 				  profileModel.setProfile(profilePemilik, namaZoo);
@@ -222,84 +173,81 @@ public class MainController {
 				  profileView.setAnimal(profileModel.getProfile().getJumlahAnimal());
 				  profileView.setList(profileModel.getProfile().getAchievement());
 				  
+				  buildModeView.fillTable( buildModeView.getTable(), buildModeModel.getMyZoo());
 				  
-				  view = buildModeView;
-				  model = buildModeModel;
 				  buildModeView.setVisible(true);
 				  
-			  } else if (m.getSource() == ((NewGameView)view).getBtnCancel()){
+			  } else if (m.getSource() == newGameView.getBtnCancel()){
 				  
 			  } 
 			}
 		}
 		  private class BuildModeListener implements ActionListener {
 			    private BuildModeListener() {
-			      buildModeView.fillTable( buildModeView.getTable(), buildModeModel.getMyZoo());
+			      
 			    }
 
 			    public void actionPerformed(ActionEvent e){
-			      if (e.getSource() == ((BuildModeView) view ).getBtnBuyAnimal()) {
-			        JOptionPane.showMessageDialog(((BuildModeView) view ),"BUY ANIMAL");
-			      } else if (e.getSource() == ((BuildModeView) view ).getBtnSellAnimal()) {
-			        JOptionPane.showMessageDialog(((BuildModeView) view ), "SELL ANIMAL");
-			      } else if (e.getSource() == ((BuildModeView) view ).getBtnMoveAnimal()) {
-			        JOptionPane.showMessageDialog(((BuildModeView) view ), "MOVE ANIMAL");
-			      } else if (e.getSource() == ((BuildModeView) view ).getBtnChangeCellType()) {
-			        //JOptionPane.showMessageDialog(((BuildModeView) view ), "CHANGE CELL TYPE");
-			    	String[] celltypes = { "Park","Restaurant","Road","Entrance","Exit","AirHabitat","WaterHabitat","LandHabitat" };
-			    	String selectedCellType = (String)JOptionPane.showInputDialog(
-			                null,
-			                "Tipe Cell:\n",
-			                "Pilih tipe Cell",
-			                JOptionPane.PLAIN_MESSAGE,
-			                null, //icon
-			                celltypes,
-			                "Park");
-			    	int posx = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan X"));
-			    	int posy = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan Y"));
-			    	if (posx < 0 || posx >=25 || posy < 0 || posy >= 25) {
-			    		JOptionPane.showMessageDialog(null,
-			    			    "Lokasi cell tidak valid!",
-			    			    "Location Wrong",
-			    			    JOptionPane.ERROR_MESSAGE);
-			    		
-			    	} else {
-			    		JOptionPane.showMessageDialog(null,
-			    			    "Berhasil dimasukkan!");
-			    		char readed;
-			    		if (selectedCellType.equals("Park")){
-			    			readed = 'P';    			
-			    		}else if (selectedCellType.equals("Restaurant")){
-			    			readed = 'R';
-			    		}else if (selectedCellType.equals("Road")){
-			    			readed = '.';
-			    		}else if (selectedCellType.equals("Entrance")){
-			    			readed = 'I';
-			    		}else if (selectedCellType.equals("Exit")){
-			    			readed = 'O';
-			    		}else if (selectedCellType.equals("AirHabitat")){
-			    			readed = 'a';
-			    		}else if (selectedCellType.equals("WaterHabitat")) {
-			    			readed = 'w';
-			    		}else {
-			    			readed = 'x';
-			    		}
-			    		((BuildModeModel) model).getMyZoo().setCellType(new Point(posx,posy), readed);
-			    		((BuildModeView) view ).fillTable(((BuildModeView) view ).getTable(),((BuildModeModel) model).getMyZoo());
-			    	}
-					
-			      } else if (e.getSource() == ((BuildModeView) view ).getMntmNewMenuItem()) {
-			    	buildModeView.setVisible(false);
-			    	tourView.setVisible(true);
-			      } else if (e.getSource() == ((BuildModeView) view ).getMntmProfile()) {
-			        view = profileView;
-			        model = profileModel;
-			        buildModeView.setVisible(false);
-			        profileView.setVisible(true);
-			      } else if (e.getSource() == ((BuildModeView) view ).getMntmMenu()) {
-			    	buildModeView.setVisible(false);
-			    	menuView.setVisible(true);
-			      }
-			    }
-			  }
+				      if (e.getSource() == buildModeView.getBtnBuyAnimal()) {
+				        JOptionPane.showMessageDialog(buildModeView,"BUY ANIMAL"); } else if (e.getSource() == buildModeView.getBtnSellAnimal()) {
+				        JOptionPane.showMessageDialog(buildModeView, "SELL ANIMAL");
+				      } else if (e.getSource() == buildModeView.getBtnMoveAnimal()) {
+				        JOptionPane.showMessageDialog(buildModeView, "MOVE ANIMAL");
+				      } else if (e.getSource() == buildModeView.getBtnChangeCellType()) {
+				        //JOptionPane.showMessageDialog(buildModeView, "CHANGE CELL TYPE");
+				    	String[] celltypes = { "Park","Restaurant","Road","Entrance","Exit","AirHabitat","WaterHabitat","LandHabitat" };
+				    	String selectedCellType = (String)JOptionPane.showInputDialog(
+				                null,
+				                "Tipe Cell:\n",
+				                "Pilih tipe Cell",
+				                JOptionPane.PLAIN_MESSAGE,
+				                null, //icon
+				                celltypes,
+				                "Park");
+				    	int posx = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan X"));
+				    	int posy = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan Y"));
+				    	if (posx < 0 || posx >=25 || posy < 0 || posy >= 25) {
+				    		JOptionPane.showMessageDialog(null,
+				    			    "Lokasi cell tidak valid!",
+				    			    "Location Wrong",
+				    			    JOptionPane.ERROR_MESSAGE);
+				    		
+				    	} else {
+				    		JOptionPane.showMessageDialog(null,
+				    			    "Berhasil dimasukkan!");
+				    		char readed;
+				    		if (selectedCellType.equals("Park")){
+				    			System.out.println("PARKED");
+				    			readed = '#';    			
+				    		}else if (selectedCellType.equals("Restaurant")){
+				    			readed = 'R';
+				    		}else if (selectedCellType.equals("Road")){
+				    			readed = '.';
+				    		}else if (selectedCellType.equals("Entrance")){
+				    			readed = 'I';
+				    		}else if (selectedCellType.equals("Exit")){
+				    			readed = 'O';
+				    		}else if (selectedCellType.equals("AirHabitat")){
+				    			readed = 'a';
+				    		}else if (selectedCellType.equals("WaterHabitat")) {
+				    			readed = 'w';
+				    		}else {
+				    			readed = 'x';
+				    		}
+				    		buildModeModel.getMyZoo().setCellType(new Point(posx,posy), readed);
+				    		buildModeView.fillTable(buildModeView.getTable(),buildModeModel.getMyZoo());
+				    	}
+						
+				      } else if (e.getSource() == buildModeView.getMntmNewMenuItem()) {
+				    	buildModeView.setVisible(false);
+				    	tourView.setVisible(true);
+				      } else if (e.getSource() == buildModeView.getMntmProfile()) {
+				        buildModeView.setVisible(false);
+				        profileView.setVisible(true);
+				      } else if (e.getSource() == buildModeView.getMntmMenu()) {
+				    	buildModeView.setVisible(false);
+				    	menuView.setVisible(true);
+				      }
+				    }
+				  }
 }
